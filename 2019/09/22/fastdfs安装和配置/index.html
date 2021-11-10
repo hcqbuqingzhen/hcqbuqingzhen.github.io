@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | mystyle</title>
+  <title>fastdfs 搭建和配置 | mystyle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="mystyle">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="fastdfs搭建1 fastdfs的安装 编译和安装所需的依赖包1yum install make cmake gcc gcc-c++ libevent  安装libfastcommon123456789解压.&#x2F;make.sh.&#x2F;make.sh install;libfastcommon 默认安装到了&#x2F;usr&#x2F;lib64&#x2F;libfastcommon.so因为FastDFS主程序设置的lib目录是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fastdfs 搭建和配置">
+<meta property="og:url" content="http://example.com/2019/09/22/fastdfs%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="mystyle">
+<meta property="og:description" content="fastdfs搭建1 fastdfs的安装 编译和安装所需的依赖包1yum install make cmake gcc gcc-c++ libevent  安装libfastcommon123456789解压.&#x2F;make.sh.&#x2F;make.sh install;libfastcommon 默认安装到了&#x2F;usr&#x2F;lib64&#x2F;libfastcommon.so因为FastDFS主程序设置的lib目录是">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-22T14:31:01.000Z">
+<meta property="article:modified_time" content="2021-11-10T01:17:15.215Z">
 <meta property="article:author" content="韩长庆">
+<meta property="article:tag" content="软件">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="mystyle" type="application/atom+xml">
@@ -150,174 +155,198 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-fastdfs安装和配置" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      fastdfs 搭建和配置
+    </h1>
+  
+
+        
+        <a href="/2019/09/22/fastdfs%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2019-09-22T14:31:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="fastdfs搭建"><a href="#fastdfs搭建" class="headerlink" title="fastdfs搭建"></a>fastdfs搭建</h1><h2 id="1-fastdfs的安装"><a href="#1-fastdfs的安装" class="headerlink" title="1 fastdfs的安装"></a>1 fastdfs的安装</h2><ol>
+<li>编译和安装所需的依赖包<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install make cmake gcc gcc-c++ libevent </span><br></pre></td></tr></table></figure></li>
+<li>安装libfastcommon<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">解压</span><br><span class="line">./make.sh</span><br><span class="line">./make.sh install;</span><br><span class="line"></span><br><span class="line">libfastcommon 默认安装到了/usr/lib64/libfastcommon.so</span><br><span class="line">因为FastDFS主程序设置的lib目录是/usr/lib，所以需要创建软链接,或者复制.</span><br><span class="line"></span><br><span class="line">ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so</span><br><span class="line">ln -s /usr/lib64/libfdfsclient.so /usr/lib/libfdfsclient.so</span><br></pre></td></tr></table></figure></li>
+<li>安装fastdfs<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">cd ~/devfile/fastdfs/FastDFS</span><br><span class="line">./make.sh</span><br><span class="line">./make.sh install</span><br><span class="line">输出如下</span><br><span class="line">##</span><br><span class="line">mkdir -p /usr/bin</span><br><span class="line">mkdir -p /etc/fdfs</span><br><span class="line">cp -f fdfs_trackerd /usr/bin</span><br><span class="line">if [ ! -f /etc/fdfs/tracker.conf.sample ]; then cp -f ../conf/tracker.conf /etc/fdfs/tracker.conf.sample; fi</span><br><span class="line">mkdir -p /usr/bin</span><br><span class="line">mkdir -p /etc/fdfs</span><br><span class="line">cp -f fdfs_storaged  /usr/bin</span><br><span class="line">if [ ! -f /etc/fdfs/storage.conf.sample ]; then cp -f ../conf/storage.conf /etc/fdfs/storage.conf.sample; fi</span><br><span class="line">mkdir -p /usr/bin</span><br><span class="line">mkdir -p /etc/fdfs</span><br><span class="line">mkdir -p /usr/lib64</span><br><span class="line">cp -f fdfs_monitor fdfs_test fdfs_test1 fdfs_crc32 fdfs_upload_file fdfs_download_file fdfs_delete_file fdfs_file_info fdfs_appender_test fdfs_appender_test1 fdfs_append_file fdfs_upload_appender /usr/bin</span><br><span class="line">if [ 0 -eq 1 ]; then cp -f libfdfsclient.a /usr/lib64; fi</span><br><span class="line">if [ 1 -eq 1 ]; then cp -f libfdfsclient.so /usr/lib64; fi</span><br><span class="line">mkdir -p /usr/include/fastdfs</span><br><span class="line">cp -f ../common/fdfs_define.h ../common/fdfs_global.h ../common/mime_file_parser.h ../common/fdfs_http_shared.h ../tracker/tracker_types.h ../tracker/tracker_proto.h ../tracker/fdfs_shared_func.h ../storage/trunk_mgr/trunk_shared.h tracker_client.h storage_client.h storage_client1.h client_func.h client_global.h fdfs_client.h /usr/include/fastdfs</span><br><span class="line">if [ ! -f /etc/fdfs/client.conf.sample ]; then cp -f ../conf/client.conf /etc/fdfs/client.conf.sample; fi</span><br><span class="line">##</span><br><span class="line"></span><br><span class="line">服务脚本在：</span><br><span class="line">/etc/init.d/fdfs_storaged</span><br><span class="line">/etc/init.d/fdfs_trackerd</span><br><span class="line"></span><br><span class="line">配置文件在（样例配置文件）:</span><br><span class="line">/etc/fdfs/client.conf.sample</span><br><span class="line">/etc/fdfs/storage.conf.sample</span><br><span class="line">/etc/fdfs/tracker.conf.sample</span><br><span class="line"></span><br><span class="line">命令工具在/usr/bin/目录下的：</span><br><span class="line">fdfs_appender_test</span><br><span class="line">fdfs_appender_test1</span><br><span class="line">fdfs_append_file</span><br><span class="line">fdfs_crc32</span><br><span class="line">fdfs_delete_file</span><br><span class="line">fdfs_download_file</span><br><span class="line">fdfs_file_info</span><br><span class="line">fdfs_monitor</span><br><span class="line">fdfs_storaged</span><br><span class="line">fdfs_test</span><br><span class="line">fdfs_test1</span><br><span class="line">fdfs_trackerd</span><br><span class="line">fdfs_upload_appender</span><br><span class="line">fdfs_upload_file</span><br><span class="line">stop.sh</span><br><span class="line">restart.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">因为FastDFS服务脚本设置的bin目录是/usr/local/bin，但实际命令安装在/usr/bin，可以进入/user/bin 目录使用以下命令查看 fdfs 的相关命令：</span><br><span class="line">cd /usr/bin/</span><br><span class="line">ls | grep fdfs</span><br><span class="line"></span><br><span class="line">因此需要修改FastDFS服务脚本中相应的命令路径，也就是把/etc/init.d/fdfs_storaged和/etc/init.d/fdfs_trackerd 两个脚本中的/usr/local/bin修改成/usr/bin：</span><br><span class="line">vim /etc/init.d/fdfs_trackerd</span><br><span class="line">手动修改或者</span><br><span class="line">使用查找替换命令进统一修改：:%s+/usr/local/bin+/usr/bin</span><br><span class="line">  </span><br><span class="line">vim /etc/init.d/fdfs_storaged</span><br><span class="line">使用查找替换命令进统一修改：:%s+/usr/local/bin+/usr/bin</span><br><span class="line"></span><br><span class="line">至此fastdfs的trackerd storaged都已经安装好,且可以通过修改过得脚本管理服务.</span><br></pre></td></tr></table></figure>
+<h2 id="2-fdfs搭建集群"><a href="#2-fdfs搭建集群" class="headerlink" title="2 fdfs搭建集群"></a>2 fdfs搭建集群</h2>fdfs的集群搭建主要是通过配置文件<br>接下来就是通过修改配置文件来搭建集群.<br>为节省资源架构如下<br>机器名|ip|安装软件</li>
+</ol>
+<p>-|-|-<br>tracker01 |    192.168.1.111 |    FastDFS,libfastcommon,nginx,fastdfs-nginx-module<br>tracker02 |    192.168.1.112 |    FastDFS,libfastcommon,nginx,fastdfs-nginx-module<br>storage01 |    192.168.1.111 |    FastDFS,libfastcommon,nginx,fastdfs-nginx-module<br>storage02 |    192.168.1.112 |    FastDFS,libfastcommon,nginx,fastdfs-nginx-module<br>客户机1  |   192.168.1.111  |   Fastdfs_client<br>使用虚拟机搭建,搭建完一台后,复制虚拟机更改配置文件即可.</p>
+<ol>
+<li><p>配置tracker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cp storage.conf.sample storage.conf</span><br><span class="line">cp tracker.conf.sample tracker.conf</span><br><span class="line">vim /etc/fdfs/tracker.conf</span><br><span class="line"></span><br><span class="line">disabled=false               //启用配置文件</span><br><span class="line">port=22122                   //tracker 的端口号，一般采用 22122 这个默认端口</span><br><span class="line">base_path=/fastdfs/tracker   //tracker 的数据文件和日志目录</span><br><span class="line"> </span><br><span class="line"># the method of selecting group to upload files</span><br><span class="line"># 0: round robin</span><br><span class="line"># 1: specify group</span><br><span class="line"># 2: load balance, select the max free space group to upload file</span><br><span class="line">store_lookup=0              //采取轮巡方式选择要上传的组进行存储，默认2 选择最大空闲空间的组</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>配置storage</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fdfs/storage.conf</span><br><span class="line">#需要修改的内容如下</span><br><span class="line">disabled=false                          //启用配置文件</span><br><span class="line">group_name=group1                       //组名（第一组为 group1，第二组为 group2）</span><br><span class="line">port=23000 # storage服务端口（默认23000,一般不修改）</span><br><span class="line">base_path=/fastdfs/storage # 数据和日志文件存储根目录</span><br><span class="line">store_path0=/fastdfs/storage/data # 第一个存储目录</span><br><span class="line">tracker_server=192.168.1.111:22122 # tracker服务器IP和端口</span><br><span class="line">tracker_server=192.168.1.112:22122 # tracker服务器IP和端口</span><br><span class="line">http.server_port=80 # http访问文件的端口(默认8888,看情况修改,和nginx中保持一致)</span><br></pre></td></tr></table></figure></li>
+<li><p>配置Client</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fdfs/client.conf</span><br><span class="line">#需要修改的内容如下</span><br><span class="line">base_path=/fastdfs/client</span><br><span class="line">tracker_server=192.168.1.111:22122 # tracker服务器IP和端口</span><br><span class="line">tracker_server=192.168.1.112:22122 # tracker服务器IP和端口</span><br><span class="line"></span><br><span class="line">根据以上配置,建立文件夹.</span><br><span class="line">mkdir -p /fastdfs/client</span><br><span class="line">mkdir -p /fastdfs/storage</span><br><span class="line">mkdir -p /fastdfs/storage/data</span><br><span class="line">mkdir -p /fastdfs/tracker</span><br><span class="line"></span><br><span class="line">开放以上端口,多开放几个万一有用呢.</span><br><span class="line">firewall-cmd --zone=public --add-port=22122/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=23000/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=8888/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=8080/tcp --permanent</span><br></pre></td></tr></table></figure></li>
+<li><p>安装nginx和FastDFS-nginx-module<br>安装nginx是为了使用http访问文件服务器上的文件<br>FastDFS-nginx-module是ngixn的插件,当访问的文件未及时同步时,可以自动请求组内的其他storage.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">首先</span><br><span class="line">cp /usr/lib64/libfdfsclient.so /usr/lib/ </span><br><span class="line">mkdir -p /var/temp/nginx/client </span><br><span class="line"></span><br><span class="line">tar -zxvf FastDFS-nginx-module_v1.16.tar.gz </span><br><span class="line">cd FastDFS-nginx-module/src </span><br><span class="line">vim config </span><br><span class="line">修改config文件将/usr/local/路径改为/usr/ </span><br><span class="line"></span><br><span class="line">fastdfs-nginx-module 的配置文件默认地址为/etc/fdfs/mod_fastdfs.conf</span><br><span class="line">如果没有,可以复制一份到/etc/fdfs/ 目录下</span><br><span class="line"></span><br><span class="line">cd nginx-1.8</span><br><span class="line">执行以下,最后一行为mod源码所在位置.</span><br><span class="line"></span><br><span class="line">./configure \</span><br><span class="line">--prefix=/usr/local/nginx \</span><br><span class="line">--pid-path=/var/run/nginx/nginx.pid \</span><br><span class="line">--lock-path=/var/lock/nginx.lock \</span><br><span class="line">--error-log-path=/var/log/nginx/error.log \</span><br><span class="line">--http-log-path=/var/log/nginx/access.log \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--http-client-body-temp-path=/var/temp/nginx/client \</span><br><span class="line">--http-proxy-temp-path=/var/temp/nginx/proxy \</span><br><span class="line">--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \</span><br><span class="line">--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \</span><br><span class="line">--http-scgi-temp-path=/var/temp/nginx/scgi \</span><br><span class="line">--add-module=/home/hcq/devfile/fastdfs/fastdfs-nginx-module/src</span><br><span class="line"></span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line">至此nginx和mod安装完成,可以通过nginx访问上传的文件.</span><br><span class="line">修改nginx配置文件</span><br><span class="line">vim /usr.local/nginx/conf/nginx.conf</span><br><span class="line">server&#123;</span><br><span class="line">        listen      80;</span><br><span class="line">        server_name 192.168.1.111;</span><br><span class="line"></span><br><span class="line">        location /group1/M00&#123;</span><br><span class="line">                root  /fastdfs/storage/data;</span><br><span class="line">                ngx_fastdfs_module;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>复制虚拟机搭建集群<br>修改storage的group为group2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fdfs/storage.conf</span><br><span class="line">#需要修改的内容如下</span><br><span class="line">group_name=group2                       //组名（第一组为 group1，第二组为 group2）</span><br><span class="line"></span><br><span class="line">vim /usr/local/nginx/conf/nginx.conf</span><br><span class="line">server&#123;s</span><br><span class="line">        listen      80;</span><br><span class="line">        server_name 192.168.1.112;</span><br><span class="line"></span><br><span class="line">        location /group2/M00&#123;</span><br><span class="line">                root  /fastdfs/storage/data/data;</span><br><span class="line">                ngx_fastdfs_module;</span><br><span class="line">                &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>启动 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/fdfs_trackerd start</span><br><span class="line">sudo /etc/init.d/fdfs_storaged start</span><br><span class="line"></span><br><span class="line">所有Storage节点都启动之后，可以在任一 Storage 节点上使用如下命令查看集群信息：</span><br><span class="line">/usr/bin/fdfs_monitor /etc/fdfs/storage.conf</span><br></pre></td></tr></table></figure></li>
+<li><p>测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">在任意机器下执行</span><br><span class="line">上传文件</span><br><span class="line">/usr/bin/fdfs_test /etc/fdfs/client.conf upload pic/p1.jpg (此种方式不会轮训上传)</span><br><span class="line">返回如下</span><br><span class="line">group_name=group2, ip_addr=192.168.1.112, port=23000</span><br><span class="line">storage_upload_by_filename</span><br><span class="line">group_name=group2, remote_filename=M00/00/00/wKgBcF4E08iAWJ4kAAfNHkhMyWo887.jpg</span><br><span class="line">source ip address: 192.168.1.112</span><br><span class="line">file timestamp=2019-12-26 10:37:44</span><br><span class="line">file size=511262</span><br><span class="line">file crc32=1212991850</span><br><span class="line">example file url: http://192.168.1.112/group2/M00/00/00/wKgBcF4E08iAWJ4kAAfNHkhMyWo887.jpg</span><br><span class="line">storage_upload_slave_by_filename</span><br><span class="line">group_name=group2, remote_filename=M00/00/00/wKgBcF4E08iAWJ4kAAfNHkhMyWo887_big.jpg</span><br><span class="line">source ip address: 192.168.1.112</span><br><span class="line">file timestamp=2019-12-26 10:37:44</span><br><span class="line">file size=511262</span><br><span class="line">file crc32=1212991850</span><br><span class="line">example file url: http://192.168.1.112/group2/M00/00/00/wKgBcF4E08iAWJ4kAAfNHkhMyWo887_big.jpg</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line">/usr/bin/fdfs_upload_file /etc/fdfs/client.conf pic/p1.jpg (会采用轮训上传的方式)</span><br><span class="line">返回如下</span><br><span class="line">group2/M00/00/00/wKgBcF4E8tuAEh8XAAfNHkhMyWo607.jpg</span><br><span class="line"></span><br><span class="line">/usr/bin/fdfs_upload_file /etc/fdfs/client.conf pic/p1.jpg</span><br><span class="line">group1/M00/00/01/wKgBb14E-AaAfkntAAfNHkhMyWo582.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">启动nginx通过http访问</span><br><span class="line">需要修改插件的配置文件</span><br><span class="line">vim /etc/fdfs/mod_fastdfs.conf</span><br><span class="line">base_path=/fsatdfs/treacker</span><br><span class="line">tracker_server=192.168.1.111:22122 </span><br><span class="line">tracker_server=192.168.1.112:22122 </span><br><span class="line">url_have_group_name=true  #url中包含group名称 </span><br><span class="line">store_path0=/home/fastdfs/fdfs_storage   #指定文件存储路径 </span><br><span class="line"></span><br><span class="line">实际上因为架构的问题,这个插件是没有作用的,一个组内有多台storage才有作用.</span><br><span class="line"></span><br><span class="line">/usr/local/nginx/sbin/nginx</span><br><span class="line">遇到了一个nginx无法启动的问题,查看nginx的错误日志解决掉.</span><br><span class="line">nginx启动后通过本地浏览器访问即可查看上传的图片.</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/01%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/01%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">什么是持续集成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">软件</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/09/22/fastdfs%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/02jenkins%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/26/mongodb%E5%AE%89%E8%A3%85%E5%92%8C%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mongodb安装和集群搭建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/16/docker%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS模块化工具requirejs</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/02jenkins%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">jenkins安装和配置</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/03jenkins%E6%9E%84%E5%BB%BA%E7%BB%86%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/03jenkins%E6%9E%84%E5%BB%BA%E7%BB%86%E8%8A%82/">jenkins构建项目</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/04-J+D+S/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/04-J+D+S/">jenkins+docker+springcloud</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -340,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

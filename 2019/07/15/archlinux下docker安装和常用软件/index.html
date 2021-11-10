@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | mystyle</title>
+  <title>docker的安装和使用 | mystyle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="mystyle">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="Docker 1 docker安装和启动1.1 安装1234sudo pacman -S docker&#x2F;&#x2F;redhet系linuxsudo yum install docker-ce  此时会安装docker和依赖 1.2 设置ustc的镜像1vi &#x2F;etc&#x2F;docker&#x2F;daemon.json    在该文件中输入如下内容： 123&amp;#123;&quot;registry-mirrors&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker的安装和使用">
+<meta property="og:url" content="http://example.com/2019/07/15/archlinux%E4%B8%8Bdocker%E5%AE%89%E8%A3%85%E5%92%8C%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/index.html">
 <meta property="og:site_name" content="mystyle">
+<meta property="og:description" content="Docker 1 docker安装和启动1.1 安装1234sudo pacman -S docker&#x2F;&#x2F;redhet系linuxsudo yum install docker-ce  此时会安装docker和依赖 1.2 设置ustc的镜像1vi &#x2F;etc&#x2F;docker&#x2F;daemon.json    在该文件中输入如下内容： 123&amp;#123;&quot;registry-mirrors&amp;quo">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-15T12:31:01.000Z">
+<meta property="article:modified_time" content="2021-11-10T01:16:54.460Z">
 <meta property="article:author" content="韩长庆">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="mystyle" type="application/atom+xml">
@@ -150,174 +155,337 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-archlinux下docker安装和常用软件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      docker的安装和使用
+    </h1>
+  
+
+        
+        <a href="/2019/07/15/archlinux%E4%B8%8Bdocker%E5%AE%89%E8%A3%85%E5%92%8C%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2019-07-15T12:31:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><hr>
+<h2 id="1-docker安装和启动"><a href="#1-docker安装和启动" class="headerlink" title="1 docker安装和启动"></a>1 docker安装和启动</h2><h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><pre><code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S docker</span><br><span class="line"></span><br><span class="line">//redhet系linux</span><br><span class="line">sudo yum install docker-ce</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>此时会安装docker和依赖</p>
+<h3 id="1-2-设置ustc的镜像"><a href="#1-2-设置ustc的镜像" class="headerlink" title="1.2 设置ustc的镜像"></a>1.2 设置ustc的镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/docker/daemon.json  </span><br></pre></td></tr></table></figure>
+
+<p>在该文件中输入如下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;registry-mirrors&quot;: [&quot;https://docker.mirrors.ustc.edu.cn&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-Docker守护进程的启动与停止"><a href="#1-3-Docker守护进程的启动与停止" class="headerlink" title="1.3 Docker守护进程的启动与停止"></a>1.3 Docker守护进程的启动与停止</h3><p>启动docker：docker服务即docker守护进程的启动和停止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<p>停止docker：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+
+<p>重启docker：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>查看docker状态：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+
+<p>开机启动：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<p>查看docker概要信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<p>查看docker帮助文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --help</span><br></pre></td></tr></table></figure>
+<h2 id="2-镜像相关命令"><a href="#2-镜像相关命令" class="headerlink" title="2 镜像相关命令"></a>2 镜像相关命令</h2><h3 id="2-1-查看镜像"><a href="#2-1-查看镜像" class="headerlink" title="2.1 查看镜像"></a>2.1 查看镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>REPOSITORY：镜像名称</p>
+<p>TAG：镜像标签</p>
+<p>IMAGE ID：镜像ID</p>
+<p>CREATED：镜像的创建日期（不是获取该镜像的日期）</p>
+<p>SIZE：镜像大小</p>
+<p>镜像都是存储在Docker宿主机的/var/lib/docker目录下<br>此目录也是docker的容器的工作目录</p>
+<h3 id="2-2-搜索镜像"><a href="#2-2-搜索镜像" class="headerlink" title="2.2 搜索镜像"></a>2.2 搜索镜像</h3><p>如果你需要从网络中查找需要的镜像，可以通过以下命令搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search 镜像名称</span><br></pre></td></tr></table></figure>
+
+<p>NAME：仓库名称</p>
+<p>DESCRIPTION：镜像描述</p>
+<p>STARS：用户评价，反应一个镜像的受欢迎程度</p>
+<p>OFFICIAL：是否官方</p>
+<p>AUTOMATED：自动构建，表示该镜像由Docker Hub自动构建流程创建的</p>
+<h3 id="2-3-拉取镜像"><a href="#2-3-拉取镜像" class="headerlink" title="2.3 拉取镜像"></a>2.3 拉取镜像</h3><p>拉取镜像就是从中央仓库中下载镜像到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名称</span><br></pre></td></tr></table></figure>
+
+<p>例如，我要下载centos7镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos:7</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-删除镜像"><a href="#2-4-删除镜像" class="headerlink" title="2.4 删除镜像"></a>2.4 删除镜像</h3><p>按镜像ID删除镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像ID</span><br></pre></td></tr></table></figure>
+
+<p>删除所有镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi `docker images -q`</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-容器相关命令"><a href="#3-容器相关命令" class="headerlink" title="3 容器相关命令"></a>3 容器相关命令</h2><h3 id="3-1-创建与启动容器"><a href="#3-1-创建与启动容器" class="headerlink" title="3.1 创建与启动容器"></a>3.1 创建与启动容器</h3><p>创建容器常用的参数说明：</p>
+<p>创建容器命令：docker run</p>
+<p> -i：表示运行容器</p>
+<p> -t：表示容器启动后会进入其命令行。加入这两个参数后，容器创建就能登录进去。即分配一个伪终端。</p>
+<p> –name :为创建的容器命名。</p>
+<p> -v：表示目录映射关系（前者是宿主机目录，后者是映射到宿主机上的目录），可以使用多个－v做多个目录或文件映射。注意：最好做目录映射，在宿主机上做修改，然后共享到容器上。</p>
+<p> -d：在run后面加上-d参数,则会创建一个守护式容器在后台运行（这样创建容器后不会自动登录容器，如果只加-i -t两个参数，创建后就会自动进去容器）。</p>
+<p> -p：表示端口映射，前者是宿主机端口，后者是容器内的映射端口。可以使用多个-p做多个端口映射</p>
+<p>（1）交互式方式创建容器 创建后会自动登陆进去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=容器名称 镜像名称:标签 /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>这时我们通过ps命令查看，发现可以看到启动的容器，状态为启动状态  </p>
+<p>退出当前容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>（2）守护式方式创建容器：创建后不会自动登陆进去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=容器名称 镜像名称:标签</span><br></pre></td></tr></table></figure>
+
+<p>登录守护式容器方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 容器名称 (或者容器ID)  /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-停止与启动容器"><a href="#3-2-停止与启动容器" class="headerlink" title="3.2 停止与启动容器"></a>3.2 停止与启动容器</h3><p>停止容器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器名称（或者容器ID）</span><br></pre></td></tr></table></figure>
+
+<p>启动容器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器名称（或者容器ID）</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-查看容器"><a href="#3-3-查看容器" class="headerlink" title="3.3 查看容器"></a>3.3 查看容器</h3><p>查看正在运行的容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+<p>查看所有容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps –a</span><br></pre></td></tr></table></figure>
+
+<p>查看最后一次运行的容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps –l</span><br></pre></td></tr></table></figure>
+
+<p>查看停止的容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -f status=exited</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-文件拷贝"><a href="#3-4-文件拷贝" class="headerlink" title="3.4 文件拷贝"></a>3.4 文件拷贝</h3><p>如果我们需要将文件拷贝到容器内可以使用cp命令：容器启动与否均可拷贝</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 需要拷贝的文件或目录 容器名称:容器目录</span><br></pre></td></tr></table></figure>
+
+<p>也可以将文件从容器内拷贝出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器名称:容器目录 需要拷贝的文件或目录</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-目录挂载"><a href="#3-5-目录挂载" class="headerlink" title="3.5 目录挂载"></a>3.5 目录挂载</h3><p>我们可以在创建容器的时候，将宿主机的目录与容器内的目录进行映射，这样我们就可以通过修改宿主机某个目录的文件从而去影响容器。<br>创建容器 添加-v参数 后边为   宿主机目录:容器目录，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di -v /usr/local/myhtml:/usr/local/myhtml --name=mycentos3 centos:7</span><br></pre></td></tr></table></figure>
+
+<p>如果你共享的是多级的目录，可能会出现权限不足的提示。</p>
+<p>这是因为CentOS7中的安全模块selinux把权限禁掉了，我们需要添加参数  –privileged=true  来解决挂载的目录没有权限的问题</p>
+<h3 id="3-6-查看容器各种数据"><a href="#3-6-查看容器各种数据" class="headerlink" title="3.6 查看容器各种数据"></a>3.6 查看容器各种数据</h3><p>我们可以通过以下命令查看容器运行的各种数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器名称（容器ID） </span><br></pre></td></tr></table></figure>
+
+<p>也可以直接执行下面的命令直接输出IP地址：注意NetworkSettings 前面的.不可省略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=&#x27;&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;&#x27; 容器名称（容器ID）</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">docker inspect --format=&#123;&#123;.NetworkSettings.Networks.bridge.Gateway&#125;&#125; mycentos3</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-删除容器"><a href="#3-7-删除容器" class="headerlink" title="3.7 删除容器"></a>3.7 删除容器</h3><p>删除指定的容器：不能删除正在运行的容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器名称（容器ID）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4 实际操作"></a>4 实际操作</h2><p>根据以上命令拉取一个原生的centos镜像,部署tomcat,jdk,nginx等.</p>
+<h3 id="4-1-操作容器部署jdk和tomcat"><a href="#4-1-操作容器部署jdk和tomcat" class="headerlink" title="4.1 操作容器部署jdk和tomcat"></a>4.1 操作容器部署jdk和tomcat</h3><ol>
+<li>拉取镜像<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br></pre></td></tr></table></figure></li>
+<li>建立容器<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run  --name=mytomcat -ti  -p 8080:8080 centos /bin/bash</span><br><span class="line">    ## --name:容器的名字  -di:运行且分配一个伪终端,且进入docker内.  </span><br><span class="line">    ## -p 8080:8080 将docker内的8080端口映射到宿主机的8080端口</span><br><span class="line">docker run  --name=mytomcat -di  -p 8080:8080 centos /bin/bash</span><br><span class="line">    ## --name:容器的名字  -di:后台运行且分配一个伪终端  </span><br><span class="line">    ## -p 8080:8080 将docker内的8080端口映射到宿主机的8080端口</span><br><span class="line">docker exec -it mytomcat /bin/bash </span><br><span class="line">    ## 进入后台运行的cocker </span><br></pre></td></tr></table></figure></li>
+<li>复制tomcat和jdk到容器中的目录<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp tomcat8 mytomcat:/usr/local</span><br><span class="line"></span><br><span class="line">cp jdk8 mytomcat:/usr/local</span><br></pre></td></tr></table></figure></li>
+<li>docker添加环境变量</li>
+</ol>
+<p>docker推荐的环境变量添加方式有两种<br>一是通过dockerfile建立镜像的时候添加.<br>二是run镜像的时候添加参数</p>
+<p>不过我想也可以修改运行中容器的环境变量,不过都不推荐这么做,docker应该是无状态的.</p>
+<p>修改 /etc/profile 文件添加环境变量不管用.查阅资料可知 docker启动容器是非登录状态.<br>修改 /root/.bashrc文件,添加环境变量才起作用.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /root/.bashrc </span><br></pre></td></tr></table></figure>
+<p>添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk8</span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH </span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar </span><br></pre></td></tr></table></figure>
+<p>(这么做是在不推荐,环境变量应该在建立镜像的时候添加,使用dockerfile)<br>5. 进入tomcat目录下,运行tomcat.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat8/bin/startup.sh</span><br></pre></td></tr></table></figure>
+<p>宿主机启动浏览器访问 localhost:8080即可访问docker内的tomcat服务.</p>
+<p>可挂载宿主机上线目录到容器中的tomcat工作目录,启动容器时即可访问上线的web应用.</p>
+<h3 id="4-2-使用dockerfile和镜像-搭建tomcat-jdk8新镜像"><a href="#4-2-使用dockerfile和镜像-搭建tomcat-jdk8新镜像" class="headerlink" title="4.2 使用dockerfile和镜像 搭建tomcat+jdk8新镜像."></a>4.2 使用dockerfile和镜像 搭建tomcat+jdk8新镜像.</h3><p>(1). 编辑Dockerfile文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#依赖镜像名称和ID</span><br><span class="line">FROM centos:latest</span><br><span class="line">#指定镜像创建者信息</span><br><span class="line">MAINTAINER xiaobai</span><br><span class="line">#COPY 是相对路径jar,把java添加到容器中</span><br><span class="line">COPY jdk8 /usr/local/tomcat</span><br><span class="line">COPY tomcat /usr/local/jdk8</span><br><span class="line"># 这里不知道为啥复制的时候全都复制的tomcat或者jdk8里面的子目录 还需要在docker中再添加目录(会主动创建)</span><br><span class="line">#配置java环境变量</span><br><span class="line">ENV JAVA_HOME /usr/java/jdk8</span><br><span class="line">ENV JRE_HOME $JAVA_HOME/jre</span><br><span class="line">ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">ENV PATH $JAVA_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line"># 设置容器run自启动tomcat</span><br><span class="line">ENTRYPOINT [&quot;/usr/local/tomcat/bin/catalina.sh&quot;,&quot;run&quot;]</span><br><span class="line"># 不使用 startup.sh 因为是后台进行,docker会直接退出.</span><br></pre></td></tr></table></figure>
+
+<p>(2). 执行命令构建镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t=&#x27;mytomcat:test&#x27; .</span><br></pre></td></tr></table></figure>
+
+<p>注意后边的空格和点，不要省略</p>
+<p>(3). 查看镜像是否建立完成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>(4).  运行新创建的容器</p>
+<p>写一个html页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd ~/env/tool/tomcat/tomcat01-docker/webapps</span><br><span class="line">mkdir ROOT</span><br><span class="line">vim index.html</span><br><span class="line"></span><br><span class="line">输入一下内容</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;Hello tomcat+docker!&lt;/h2&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>运行容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mytomcat -di -p 8080:8080 -v ~/dev/tool/tomcat/tomcat01-docker/webapps:/usr/local/tomcat/webapps/ mytomcat:test /bin/bash</span><br><span class="line"># -di 后台运行</span><br><span class="line"># -v 将宿主机目录挂载到tomcat服务目录下  宿主机目录:docker中目录</span><br><span class="line"># -p 端口映射 宿主机端口:docker中端口</span><br><span class="line"># </span><br></pre></td></tr></table></figure>
+<p>宿主机访问localhost:8080 访问成功.</p>
+<h2 id="5-容器的备份"><a href="#5-容器的备份" class="headerlink" title="5 容器的备份"></a>5 容器的备份</h2><h3 id="5-1-容器保存为镜像"><a href="#5-1-容器保存为镜像" class="headerlink" title="5.1 容器保存为镜像"></a>5.1 容器保存为镜像</h3><p>我们可以通过以下命令将容器保存为镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker commit mytomcat mytomcat_i:test</span><br><span class="line"></span><br><span class="line">执行 docker images 查看当前的境像，发现mytomcat_i存在</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-镜像备份"><a href="#5-2-镜像备份" class="headerlink" title="5.2 镜像备份"></a>5.2 镜像备份</h3><p>我们可以通过以下命令将镜像保存为tar 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// -o表示输出</span><br><span class="line">docker  save -o mynginx.tar mynginx_i</span><br><span class="line">会将境像mynginx_i保存在本地，保存为mynginx.tar文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-镜像恢复与迁移"><a href="#5-3-镜像恢复与迁移" class="headerlink" title="5.3 镜像恢复与迁移"></a>5.3 镜像恢复与迁移</h3><p>先删除掉mynginx_i镜像  然后执行此命令进行恢复</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i mynginx.tar</span><br></pre></td></tr></table></figure>
+
+<p>-i 输入的文件</p>
+<p>执行后再次查看镜像，可以看到镜像已经恢复</p>
+<hr>
+<p>参考 ：<br><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-tutorial.html">https://www.runoob.com/docker/docker-tutorial.html</a></p>
+<p>想了解docker镜像和容器存储原理的可以看几篇很不错的文章<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wdliu/p/10483252.html">https://www.cnblogs.com/wdliu/p/10483252.html</a><br><a target="_blank" rel="noopener" href="https://sq.163yun.com/blog/article/172542620051890176">https://sq.163yun.com/blog/article/172542620051890176</a><br>这一篇比较老，浓重的翻译腔。<br><a target="_blank" rel="noopener" href="http://dockone.io/article/783">http://dockone.io/article/783</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/01%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/01%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">什么是持续集成</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/07/15/archlinux%E4%B8%8Bdocker%E5%AE%89%E8%A3%85%E5%92%8C%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/02jenkins%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/16/docker%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS模块化工具requirejs
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/30/JS%E6%A8%A1%E5%9D%97%E5%8C%96%E5%B7%A5%E5%85%B7requirejs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS模块化工具requirejs</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/02jenkins%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/">jenkins安装和配置</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/03jenkins%E6%9E%84%E5%BB%BA%E7%BB%86%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/03jenkins%E6%9E%84%E5%BB%BA%E7%BB%86%E8%8A%82/">jenkins构建项目</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/06/30/04-J+D+S/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/06/30/04-J+D+S/">jenkins+docker+springcloud</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -340,8 +508,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
