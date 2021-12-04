@@ -423,129 +423,6 @@
 
 
   
-    <article id="post-04-J+D+S" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/30/04-J+D+S/">jenkins+docker+springcloud</a>
-    </h1>
-  
-
-        
-        <a href="/2021/06/30/04-J+D+S/" class="archive-article-date">
-  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="jenkins-docker-springcloud"><a href="#jenkins-docker-springcloud" class="headerlink" title="jenkins+docker+springcloud"></a>jenkins+docker+springcloud</h2><h3 id="1-大致流程"><a href="#1-大致流程" class="headerlink" title="1.大致流程"></a>1.大致流程</h3><ol>
-<li><p>开发人员每天把代码提交到Gitlab代码仓库</p>
-</li>
-<li><p>Jenkins从Gitlab中拉取项目源码，编译并打成jar包，然后构建成Docker镜像，将镜像上传到Harbor私有仓库。</p>
-</li>
-<li><p>Jenkins发送SSH远程命令，让生产部署服务器到Harbor私有仓库拉取镜像到本地，然后创建容器。</p>
-</li>
-<li><p>最后，用户可以访问到容器</p>
-<p><img src="/home/hxq/code/devops/jenkins/04-J+D+S.assets/image-20210506174520400.png" alt="image-20210506174520400"></p>
-</li>
-</ol>
-<h3 id="2-docker-harbor"><a href="#2-docker-harbor" class="headerlink" title="2.docker harbor"></a>2.docker harbor</h3><p>是docker的私有仓库。</p>
-<h4 id="1-harbor安装"><a href="#1-harbor安装" class="headerlink" title="1.harbor安装"></a>1.harbor安装</h4><ol>
-<li><p>下载Harbor的压缩包<br><a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/releases">https://github.com/goharbor/harbor/releases</a></p>
-</li>
-<li><p>上传压缩包到linux，并解压<br>tar -xzf harbor-offline-installer-v1.9.2.tgz<br>mkdir /opt/harbor<br>mv harbor/* /opt/harbor<br>cd /opt/harbor</p>
-</li>
-<li><p>修改Harbor的配置<br>sudo curl -L <a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases/download/1.21.2/docker?compose-$">https://github.com/docker/compose/releases/download/1.21.2/docker?compose-$</a>(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose<br>sudo chmod +x /usr/local/bin/docker-compose<br>vi harbor.yml<br>修改hostname和port<br>hostname: 192.168.66.102<br>port: 85</p>
-</li>
-<li><p>安装Harbor<br>./prepare<br>./install.sh</p>
-</li>
-<li><p>启动Harbor<br>docker-compose up -d 启动<br>docker-compose stop 停止<br>docker-compose restart 重新启动</p>
-</li>
-<li><p>访问Harbor<br>端口85</p>
-<p>默认账户密码：admin/Harbor12345</p>
-</li>
-</ol>
-<h4 id="2-harbor使用"><a href="#2-harbor使用" class="headerlink" title="2.harbor使用"></a>2.harbor使用</h4><ol>
-<li>创建项目<br>Harbor的项目分为公开和私有的：<br>公开项目：所有用户都可以访问，通常存放公共的镜像，默认有一个library公开项目。<br>私有项目：只有授权用户才可以访问，通常存放项目本身的镜像。<br>我们可以为微服务项目创建一个新的项目：</li>
-<li>创建用户</li>
-<li>给项目分配用户</li>
-<li>以新用户登陆</li>
-</ol>
-<h4 id="3-镜像上传到Harbor-并下载"><a href="#3-镜像上传到Harbor-并下载" class="headerlink" title="3.镜像上传到Harbor  并下载"></a>3.镜像上传到Harbor  并下载</h4><ol>
-<li><p>把镜像上传到Harbor<br>给镜像打上标签<br>docker tag eureka:v1 192.168.66.102:85/tensquare/eureka:v1</p>
-</li>
-<li><p>推送镜像<br>docker push 192.168.66.102:85/tensquare/eureka:v1<br>这时会出现以上报错，是因为Docker没有把Harbor加入信任列表中</p>
-</li>
-<li><p>把Harbor地址加入到Docker信任列表<br>vi /etc/docker/daemon.json<br>{“registry-mirrors”: [“<a href="https://zydiol88.mirror.aliyuncs.com&quot;],&quot;insecure-registries&quot;">https://zydiol88.mirror.aliyuncs.com&quot;],&quot;insecure-registries&quot;</a>: [“192.168.66.102:85”]}<br>需要重启Docker</p>
-</li>
-<li><p>再次执行推送命令，会提示权限不足<br>需要先登录Harbor，再推送镜像</p>
-</li>
-<li><p>登录Harbor<br>docker login -u 用户名 -p 密码 localhost:85</p>
-</li>
-<li><p>下载</p>
-<p>先登录，再从Harbor下载镜像</p>
-<p>docker login -u 用户名 -p 密码 localhost:85</p>
-<p>docker pull 192.168.66.102:85/tensquare/eureka:v1</p>
-</li>
-</ol>
-<h3 id="3-流程实现"><a href="#3-流程实现" class="headerlink" title="3.流程实现"></a>3.流程实现</h3><h4 id="参照大文档"><a href="#参照大文档" class="headerlink" title="参照大文档"></a>参照大文档</h4>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/30/04-J+D+S/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-03jenkins构建细节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -655,6 +532,129 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/06/30/03jenkins%E6%9E%84%E5%BB%BA%E7%BB%86%E8%8A%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-04-J+D+S" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/30/04-J+D+S/">jenkins+docker+springcloud</a>
+    </h1>
+  
+
+        
+        <a href="/2021/06/30/04-J+D+S/" class="archive-article-date">
+  	<time datetime="2021-06-30T14:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="jenkins-docker-springcloud"><a href="#jenkins-docker-springcloud" class="headerlink" title="jenkins+docker+springcloud"></a>jenkins+docker+springcloud</h2><h3 id="1-大致流程"><a href="#1-大致流程" class="headerlink" title="1.大致流程"></a>1.大致流程</h3><ol>
+<li><p>开发人员每天把代码提交到Gitlab代码仓库</p>
+</li>
+<li><p>Jenkins从Gitlab中拉取项目源码，编译并打成jar包，然后构建成Docker镜像，将镜像上传到Harbor私有仓库。</p>
+</li>
+<li><p>Jenkins发送SSH远程命令，让生产部署服务器到Harbor私有仓库拉取镜像到本地，然后创建容器。</p>
+</li>
+<li><p>最后，用户可以访问到容器</p>
+<p><img src="/home/hxq/code/devops/jenkins/04-J+D+S.assets/image-20210506174520400.png" alt="image-20210506174520400"></p>
+</li>
+</ol>
+<h3 id="2-docker-harbor"><a href="#2-docker-harbor" class="headerlink" title="2.docker harbor"></a>2.docker harbor</h3><p>是docker的私有仓库。</p>
+<h4 id="1-harbor安装"><a href="#1-harbor安装" class="headerlink" title="1.harbor安装"></a>1.harbor安装</h4><ol>
+<li><p>下载Harbor的压缩包<br><a target="_blank" rel="noopener" href="https://github.com/goharbor/harbor/releases">https://github.com/goharbor/harbor/releases</a></p>
+</li>
+<li><p>上传压缩包到linux，并解压<br>tar -xzf harbor-offline-installer-v1.9.2.tgz<br>mkdir /opt/harbor<br>mv harbor/* /opt/harbor<br>cd /opt/harbor</p>
+</li>
+<li><p>修改Harbor的配置<br>sudo curl -L <a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases/download/1.21.2/docker?compose-$">https://github.com/docker/compose/releases/download/1.21.2/docker?compose-$</a>(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose<br>sudo chmod +x /usr/local/bin/docker-compose<br>vi harbor.yml<br>修改hostname和port<br>hostname: 192.168.66.102<br>port: 85</p>
+</li>
+<li><p>安装Harbor<br>./prepare<br>./install.sh</p>
+</li>
+<li><p>启动Harbor<br>docker-compose up -d 启动<br>docker-compose stop 停止<br>docker-compose restart 重新启动</p>
+</li>
+<li><p>访问Harbor<br>端口85</p>
+<p>默认账户密码：admin/Harbor12345</p>
+</li>
+</ol>
+<h4 id="2-harbor使用"><a href="#2-harbor使用" class="headerlink" title="2.harbor使用"></a>2.harbor使用</h4><ol>
+<li>创建项目<br>Harbor的项目分为公开和私有的：<br>公开项目：所有用户都可以访问，通常存放公共的镜像，默认有一个library公开项目。<br>私有项目：只有授权用户才可以访问，通常存放项目本身的镜像。<br>我们可以为微服务项目创建一个新的项目：</li>
+<li>创建用户</li>
+<li>给项目分配用户</li>
+<li>以新用户登陆</li>
+</ol>
+<h4 id="3-镜像上传到Harbor-并下载"><a href="#3-镜像上传到Harbor-并下载" class="headerlink" title="3.镜像上传到Harbor  并下载"></a>3.镜像上传到Harbor  并下载</h4><ol>
+<li><p>把镜像上传到Harbor<br>给镜像打上标签<br>docker tag eureka:v1 192.168.66.102:85/tensquare/eureka:v1</p>
+</li>
+<li><p>推送镜像<br>docker push 192.168.66.102:85/tensquare/eureka:v1<br>这时会出现以上报错，是因为Docker没有把Harbor加入信任列表中</p>
+</li>
+<li><p>把Harbor地址加入到Docker信任列表<br>vi /etc/docker/daemon.json<br>{“registry-mirrors”: [“<a href="https://zydiol88.mirror.aliyuncs.com&quot;],&quot;insecure-registries&quot;">https://zydiol88.mirror.aliyuncs.com&quot;],&quot;insecure-registries&quot;</a>: [“192.168.66.102:85”]}<br>需要重启Docker</p>
+</li>
+<li><p>再次执行推送命令，会提示权限不足<br>需要先登录Harbor，再推送镜像</p>
+</li>
+<li><p>登录Harbor<br>docker login -u 用户名 -p 密码 localhost:85</p>
+</li>
+<li><p>下载</p>
+<p>先登录，再从Harbor下载镜像</p>
+<p>docker login -u 用户名 -p 密码 localhost:85</p>
+<p>docker pull 192.168.66.102:85/tensquare/eureka:v1</p>
+</li>
+</ol>
+<h3 id="3-流程实现"><a href="#3-流程实现" class="headerlink" title="3.流程实现"></a>3.流程实现</h3><h4 id="参照大文档"><a href="#参照大文档" class="headerlink" title="参照大文档"></a>参照大文档</h4>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">devops</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/30/04-J+D+S/">展开全文 >></a>
         </p>
       
 
@@ -2181,7 +2181,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">es</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2189,7 +2189,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">es</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
             
             <div class="clearfix"></div>
