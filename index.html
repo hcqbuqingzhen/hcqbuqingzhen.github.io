@@ -181,8 +181,8 @@
 </blockquote>
 </li>
 </ol>
-<p><img src="/.com//yichang3.jpg" alt="yichang3"></p>
-<p>还需要在yml配置如下图<br><img src="/.com//yichang4.jpg" alt="yichang3"></p>
+<p><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang3.jpg" alt="yichang3"></p>
+<p>还需要在yml配置如下图<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang4.jpg" alt="yichang3"></p>
 <p>这是因为DefaultErrorWebExceptionHandler.isIncludeMessage方法是这样的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isIncludeMessage</span><span class="params">(ServerRequest request, MediaType produces)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">switch</span>(<span class="keyword">this</span>.errorProperties.getIncludeMessage()) &#123;</span><br><span class="line">       <span class="keyword">case</span> ALWAYS:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       <span class="keyword">case</span> ON_PARAM:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">this</span>.isMessageEnabled(request);</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>会读取配置，然后按照配置文件的需求返回信息。  </p>
@@ -199,9 +199,9 @@
 </li>
 </ul>
 <ol>
-<li><p>DefaultErrorWebExceptionHandler：这个类是ErrorWebExceptionHandler的实现类<br><img src="/.com//yichang5.jpg" alt="yichang5"></p>
+<li><p>DefaultErrorWebExceptionHandler：这个类是ErrorWebExceptionHandler的实现类<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang5.jpg" alt="yichang5"></p>
 </li>
-<li><p>处理异常时，会通过FluxOnErrorResume调用到这个ErrorWebExceptionHandler的handle方法处理，该方法在其父类AbstractErrorWebExceptionHandler.java中，如下图，红框位置的代码是关键，异常返回内容就是在这里决定的：<br><img src="/.com//yichang6.jpg" alt="yichang6"><br>会发现此方法调用 DefaultErrorWebExceptionHandler 中的方法 getRoutingFunction</p>
+<li><p>处理异常时，会通过FluxOnErrorResume调用到这个ErrorWebExceptionHandler的handle方法处理，该方法在其父类AbstractErrorWebExceptionHandler.java中，如下图，红框位置的代码是关键，异常返回内容就是在这里决定的：<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang6.jpg" alt="yichang6"><br>会发现此方法调用 DefaultErrorWebExceptionHandler 中的方法 getRoutingFunction</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> RouterFunction&lt;ServerResponse&gt; <span class="title">getRoutingFunction</span><span class="params">(ErrorAttributes errorAttributes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> RouterFunctions.route(<span class="keyword">this</span>.acceptsTextHtml(), <span class="keyword">this</span>::renderErrorView).andRoute(RequestPredicates.all(), <span class="keyword">this</span>::renderErrorResponse);</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>::renderErrorResponse如下所示</span><br><span class="line">```<span class="function">java</span></span><br><span class="line"><span class="function">    <span class="keyword">protected</span> Mono&lt;ServerResponse&gt; <span class="title">renderErrorResponse</span><span class="params">(ServerRequest request)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//构造返回的map对象</span></span><br><span class="line">    Map&lt;String, Object&gt; error = <span class="keyword">this</span>.getErrorAttributes(request, <span class="keyword">this</span>.getErrorAttributeOptions(request, MediaType.ALL));</span><br><span class="line">    <span class="comment">//返回信息</span></span><br><span class="line">    <span class="keyword">return</span> ServerResponse.status(<span class="keyword">this</span>.getHttpStatus(error)).contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(error));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>经过上述过程，可以知道。</p>
 <blockquote>
@@ -217,7 +217,7 @@
 <li>1 抛出一个ResponseStatusException异常</li>
 <li>2 自定义异常，带ResponseStatus注解</li>
 </ul>
-<h2 id="3-定制异常体的内容"><a href="#3-定制异常体的内容" class="headerlink" title="3. 定制异常体的内容"></a>3. 定制异常体的内容</h2><p>在第一节我们已经可以返回想要的状态码和异常信息，但是请看下图。<br><img src="/.com//yichang7.jpg" alt="yichang7"></p>
+<h2 id="3-定制异常体的内容"><a href="#3-定制异常体的内容" class="headerlink" title="3. 定制异常体的内容"></a>3. 定制异常体的内容</h2><p>在第一节我们已经可以返回想要的状态码和异常信息，但是请看下图。<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang7.jpg" alt="yichang7"></p>
 <ul>
 <li>异常发生时系统固定返回8个字段，这就有些不够灵活了，在一些对格式和内容有严格要求的场景下，咱们需要能够完全控制返回码和返回body的内容，如下所示，只返回三个字段，每个字段都是完全为业务服务的</li>
 <li>我们要通过编码定制异常发生时的返回信息，具体内容就只有code、message、data三个字段</li>
@@ -361,7 +361,7 @@
 <h2 id="4-异常处理初探"><a href="#4-异常处理初探" class="headerlink" title="4. 异常处理初探"></a>4. 异常处理初探</h2><ol>
 <li><p>修改请求或者响应body的过程中，如果发现问题需要提前返回错误（例如必要的字段不存在），代码该怎么写？</p>
 </li>
-<li><p>我们修改请求body的代码集中在RequestBodyRewrite.java，增加下图内容<br><img src="/.com//yichang1.jpg" alt="yichang1"></p>
+<li><p>我们修改请求body的代码集中在RequestBodyRewrite.java，增加下图内容<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-10-%E4%BF%AE%E6%94%B9%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E4%BD%93/yichang1.jpg" alt="yichang1"></p>
 </li>
 <li><p>想告诉客户端具体的错误，但实际上客户端收到的是被Gateway框架处理后的内容  </p>
 </li>
@@ -448,7 +448,7 @@
 <li><p>默认的限流器是基于redis实现的，限流算法令牌桶（Token Bucket Algorithm）,关于令牌捅的原理就不在此展开了，</p>
 </li>
 <li><p>装令牌的桶容量有限，例如最多20个，令牌进入桶的速度恒定（注意，这里是和漏桶算法的区别），例如每秒10个，底部每个请求能拿到令牌才会被处理：</p>
-<p>  <img src="/.com//lpt.jpg" alt="令牌桶"></p>
+<p>  <img src="/mystyle/mystyle/2021/12/15/sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8/lpt.jpg" alt="令牌桶"></p>
 </li>
 </ul>
 <h2 id="2-使用RequestRateLimiter过滤器的步骤"><a href="#2-使用RequestRateLimiter过滤器的步骤" class="headerlink" title="2. 使用RequestRateLimiter过滤器的步骤"></a>2. 使用RequestRateLimiter过滤器的步骤</h2><ol>
@@ -477,13 +477,13 @@
 </ol>
 <ul>
 <li><p>安装的话 linux下发行版里一般有</p>
-<p>  <img src="/.com//sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8apdab.jpg" alt="apqab"></p>
+<p>  <img src="/mystyle/mystyle/2021/12/15/sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8/sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8apdab.jpg" alt="apqab"></p>
 </li>
 </ul>
 <p>执行如下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ab -n 10000  -c 2 http://localhost:8081/userinfo/userinfo?username=Tom</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>  <img src="/.com//xianliu1.jpg" alt="xianliu"></p>
+<p>  <img src="/mystyle/mystyle/2021/12/15/sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8/xianliu1.jpg" alt="xianliu"></p>
 <p>可以看到，100个请求只成功了20个。  </p>
 
       
@@ -579,8 +579,8 @@
 </ul>
 <ol>
 <li>在断路器实践中我们已经知道断路器是第三方库的作用，过滤器不过是个入口。</li>
-<li>在SpringCloudCircuitBreakerFilterFactory.apply方法中，可见断路器功能来自名为cb的对象，而这个对象是在红框处由reactiveCircuitBreakerFactory创建的：<br><img src="/.com//dlq1.jpg" alt="断路器"></li>
-<li>最终跟踪到了ReactiveResilience4JCircuitBreakerFactory类，发现了一个极其重要的变量，就是下图红框中的circuitBreakerRegistry<br><img src="/.com//dlq2.jpg" alt="断路器"></li>
+<li>在SpringCloudCircuitBreakerFilterFactory.apply方法中，可见断路器功能来自名为cb的对象，而这个对象是在红框处由reactiveCircuitBreakerFactory创建的：<br><img src="/mystyle/mystyle/2021/12/15/sc-gateway-08-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88%E6%89%93%E5%8D%B0%E6%96%AD%E8%B7%AF%E5%99%A8%E4%BF%A1%E6%81%AF%EF%BC%89/dlq1.jpg" alt="断路器"></li>
+<li>最终跟踪到了ReactiveResilience4JCircuitBreakerFactory类，发现了一个极其重要的变量，就是下图红框中的circuitBreakerRegistry<br><img src="/mystyle/mystyle/2021/12/15/sc-gateway-08-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88%E6%89%93%E5%8D%B0%E6%96%AD%E8%B7%AF%E5%99%A8%E4%BF%A1%E6%81%AF%EF%BC%89/dlq2.jpg" alt="断路器"></li>
 <li>ReactiveResilience4JCircuitBreakerFactory 是一个bean,我们可以将这个bean注入我们自定义的过滤器，通过反射获取circuitBreakerRegistry。</li>
 </ol>
 <h2 id="3-一个问题"><a href="#3-一个问题" class="headerlink" title="3.一个问题"></a>3.一个问题</h2><ol>
@@ -589,7 +589,7 @@
 <li>那么问题来了：如何控制CircuitBreaker和CircuitBreakerStatePrinter这两个filter的顺序，让CircuitBreakerStatePrinter先执行？</li>
 <li>CircuitBreakerStatePrinter是咱们自己写的代码，修改StatePrinterGatewayFilter.getOrder的返回值可以调整顺序，但CircuitBreaker不是咱自己的代码呀，这可如何是好？</li>
 <li>老规矩，看看断路器的源码，前文已经分析过了，断路器最重要的代码是SpringCloudCircuitBreakerFilterFactory.apply方法，如下图红框，生成的filter是GatewayFilter接口的实现类：</li>
-<li>在RouteDefinitionRouteLocator.loadGatewayFilters方法中，如下图所示，由于CircuitBreaker的filter并没有实现Ordered接口，因此执行的是红框中的代码，代表其顺序的值等于i+1，这个i就是遍历路由配置中所有过滤器时的一个从零开始的自增变量而已：<br><img src="/.com//dlq3.jpg" alt="断路器"></li>
+<li>在RouteDefinitionRouteLocator.loadGatewayFilters方法中，如下图所示，由于CircuitBreaker的filter并没有实现Ordered接口，因此执行的是红框中的代码，代表其顺序的值等于i+1，这个i就是遍历路由配置中所有过滤器时的一个从零开始的自增变量而已：<br><img src="/mystyle/mystyle/2021/12/15/sc-gateway-08-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88%E6%89%93%E5%8D%B0%E6%96%AD%E8%B7%AF%E5%99%A8%E4%BF%A1%E6%81%AF%EF%BC%89/dlq3.jpg" alt="断路器"></li>
 </ol>
 <blockquote>
 <ol>
@@ -1652,7 +1652,7 @@ AsyncPredicate 定义了 4 种逻辑操作方法：</li>
 <li>对 GatewayFilter 进行排序。</li>
 </ol>
 </blockquote>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p><img src="/.com//routelocator.jpg" alt="routelocator-all"></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p><img src="/mystyle/mystyle/2021/12/07/sc-gateway-03-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E7%BB%84%E4%BB%B6/routelocator.jpg" alt="routelocator-all"></p>
 <ul>
 <li>RouteDefinitionRouteLocator 这是一个重要的中间类，用于将 RouteDefinition 转换成 Route。</li>
 <li>GatewayProperties，读取本地配置文件，并生成配置类。<blockquote>
@@ -1682,7 +1682,7 @@ AsyncPredicate 定义了 4 种逻辑操作方法：</li>
 </ul>
 </li>
 </ul>
-<p><img src="/.com//pz.jpg" alt="工作流程图"></p>
+<p><img src="/mystyle/mystyle/2021/12/07/sc-gateway-03-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E7%BB%84%E4%BB%B6/pz.jpg" alt="工作流程图"></p>
 
       
 
@@ -1939,11 +1939,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">

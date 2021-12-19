@@ -15,17 +15,17 @@
 <meta property="og:site_name" content="mystyle">
 <meta property="og:description" content="sc-gateway-11-异常处理 先上异常处理的步骤 1. 处理异常的步骤 抛出ResponseStatusException异常 第一种就是抛出 ResponseStatusException异常，如下图所示。     还需要在yml配置如下图 这是因为DefaultErrorWebExceptionHandler.isIncludeMessage方法是这样的 12345678910prot">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hcqbuqingzhen.github.io/.com//yichang3.jpg">
-<meta property="og:image" content="https://hcqbuqingzhen.github.io/.com//yichang4.jpg">
-<meta property="og:image" content="https://hcqbuqingzhen.github.io/.com//yichang5.jpg">
-<meta property="og:image" content="https://hcqbuqingzhen.github.io/.com//yichang6.jpg">
-<meta property="og:image" content="https://hcqbuqingzhen.github.io/.com//yichang7.jpg">
+<meta property="og:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang3.jpg">
+<meta property="og:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang4.jpg">
+<meta property="og:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang5.jpg">
+<meta property="og:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang6.jpg">
+<meta property="og:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang7.jpg">
 <meta property="article:published_time" content="2021-12-18T14:30:40.000Z">
 <meta property="article:modified_time" content="2021-12-19T08:08:13.626Z">
 <meta property="article:author" content="韩长庆">
 <meta property="article:tag" content="spring-cloud-gateway">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hcqbuqingzhen.github.io/.com//yichang3.jpg">
+<meta name="twitter:image" content="https://hcqbuqingzhen.github.io/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang3.jpg">
   
     <link rel="alternative" href="/atom.xml" title="mystyle" type="application/atom+xml">
   
@@ -188,8 +188,8 @@
 </blockquote>
 </li>
 </ol>
-<p><img src="/.com//yichang3.jpg" alt="yichang3"></p>
-<p>还需要在yml配置如下图<br><img src="/.com//yichang4.jpg" alt="yichang3"></p>
+<p><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang3.jpg" alt="yichang3"></p>
+<p>还需要在yml配置如下图<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang4.jpg" alt="yichang3"></p>
 <p>这是因为DefaultErrorWebExceptionHandler.isIncludeMessage方法是这样的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isIncludeMessage</span><span class="params">(ServerRequest request, MediaType produces)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">switch</span>(<span class="keyword">this</span>.errorProperties.getIncludeMessage()) &#123;</span><br><span class="line">       <span class="keyword">case</span> ALWAYS:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">       <span class="keyword">case</span> ON_PARAM:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">this</span>.isMessageEnabled(request);</span><br><span class="line">       <span class="keyword">default</span>:</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <p>会读取配置，然后按照配置文件的需求返回信息。  </p>
@@ -206,9 +206,9 @@
 </li>
 </ul>
 <ol>
-<li><p>DefaultErrorWebExceptionHandler：这个类是ErrorWebExceptionHandler的实现类<br><img src="/.com//yichang5.jpg" alt="yichang5"></p>
+<li><p>DefaultErrorWebExceptionHandler：这个类是ErrorWebExceptionHandler的实现类<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang5.jpg" alt="yichang5"></p>
 </li>
-<li><p>处理异常时，会通过FluxOnErrorResume调用到这个ErrorWebExceptionHandler的handle方法处理，该方法在其父类AbstractErrorWebExceptionHandler.java中，如下图，红框位置的代码是关键，异常返回内容就是在这里决定的：<br><img src="/.com//yichang6.jpg" alt="yichang6"><br>会发现此方法调用 DefaultErrorWebExceptionHandler 中的方法 getRoutingFunction</p>
+<li><p>处理异常时，会通过FluxOnErrorResume调用到这个ErrorWebExceptionHandler的handle方法处理，该方法在其父类AbstractErrorWebExceptionHandler.java中，如下图，红框位置的代码是关键，异常返回内容就是在这里决定的：<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang6.jpg" alt="yichang6"><br>会发现此方法调用 DefaultErrorWebExceptionHandler 中的方法 getRoutingFunction</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> RouterFunction&lt;ServerResponse&gt; <span class="title">getRoutingFunction</span><span class="params">(ErrorAttributes errorAttributes)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> RouterFunctions.route(<span class="keyword">this</span>.acceptsTextHtml(), <span class="keyword">this</span>::renderErrorView).andRoute(RequestPredicates.all(), <span class="keyword">this</span>::renderErrorResponse);</span><br><span class="line">&#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>::renderErrorResponse如下所示</span><br><span class="line">```<span class="function">java</span></span><br><span class="line"><span class="function">    <span class="keyword">protected</span> Mono&lt;ServerResponse&gt; <span class="title">renderErrorResponse</span><span class="params">(ServerRequest request)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//构造返回的map对象</span></span><br><span class="line">    Map&lt;String, Object&gt; error = <span class="keyword">this</span>.getErrorAttributes(request, <span class="keyword">this</span>.getErrorAttributeOptions(request, MediaType.ALL));</span><br><span class="line">    <span class="comment">//返回信息</span></span><br><span class="line">    <span class="keyword">return</span> ServerResponse.status(<span class="keyword">this</span>.getHttpStatus(error)).contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromValue(error));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>经过上述过程，可以知道。</p>
 <blockquote>
@@ -224,7 +224,7 @@
 <li>1 抛出一个ResponseStatusException异常</li>
 <li>2 自定义异常，带ResponseStatus注解</li>
 </ul>
-<h2 id="3-定制异常体的内容"><a href="#3-定制异常体的内容" class="headerlink" title="3. 定制异常体的内容"></a>3. 定制异常体的内容</h2><p>在第一节我们已经可以返回想要的状态码和异常信息，但是请看下图。<br><img src="/.com//yichang7.jpg" alt="yichang7"></p>
+<h2 id="3-定制异常体的内容"><a href="#3-定制异常体的内容" class="headerlink" title="3. 定制异常体的内容"></a>3. 定制异常体的内容</h2><p>在第一节我们已经可以返回想要的状态码和异常信息，但是请看下图。<br><img src="/mystyle/mystyle/2021/12/18/sc-gateway-11-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/yichang7.jpg" alt="yichang7"></p>
 <ul>
 <li>异常发生时系统固定返回8个字段，这就有些不够灵活了，在一些对格式和内容有严格要求的场景下，咱们需要能够完全控制返回码和返回body的内容，如下所示，只返回三个字段，每个字段都是完全为业务服务的</li>
 <li>我们要通过编码定制异常发生时的返回信息，具体内容就只有code、message、data三个字段</li>
@@ -494,11 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
