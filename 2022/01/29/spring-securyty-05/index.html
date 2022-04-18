@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="spring-security-04 过滤器链的加载流程, mystyle">
-    <meta name="description" content="spring-security-05-核心配置解读1.如何配置 例子： 1234567891011121314151617181920212223242526 @Configuration@EnableWebSecuritypublic c">
+    <meta name="description" content="spring-security-05-核心配置解读1.如何配置 例子：  @Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -58,7 +60,7 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>Index</span>
+      <span>首页</span>
     </a>
     
   </li>
@@ -69,7 +71,7 @@
       
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>Tags</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -80,7 +82,7 @@
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
-      <span>Categories</span>
+      <span>分类</span>
     </a>
     
   </li>
@@ -91,7 +93,7 @@
       
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-      <span>Archives</span>
+      <span>归档</span>
     </a>
     
   </li>
@@ -102,7 +104,7 @@
       
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>About</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -113,7 +115,7 @@
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
-      <span>Contact</span>
+      <span>评论</span>
     </a>
     
   </li>
@@ -124,7 +126,7 @@
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
-      <span>Friends</span>
+      <span>友情链接</span>
     </a>
     
   </li>
@@ -159,7 +161,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			Index
+			首页
 		</a>
           
         </li>
@@ -170,7 +172,7 @@
 			
 			    <i class="fa-fw fas fa-tags"></i>
 			
-			Tags
+			标签
 		</a>
           
         </li>
@@ -181,7 +183,7 @@
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
 			
-			Categories
+			分类
 		</a>
           
         </li>
@@ -192,7 +194,7 @@
 			
 			    <i class="fa-fw fas fa-archive"></i>
 			
-			Archives
+			归档
 		</a>
           
         </li>
@@ -203,7 +205,7 @@
 			
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			About
+			关于
 		</a>
           
         </li>
@@ -214,7 +216,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			Contact
+			评论
 		</a>
           
         </li>
@@ -225,18 +227,11 @@
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
-			Friends
+			友情链接
 		</a>
           
         </li>
         
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
         
     </ul>
 </div>
@@ -244,62 +239,6 @@
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -455,7 +394,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    993
+                    944
                 </div>
                 
 
@@ -467,12 +406,40 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="spring-security-05-核心配置解读"><a href="#spring-security-05-核心配置解读" class="headerlink" title="spring-security-05-核心配置解读"></a>spring-security-05-核心配置解读</h1><h2 id="1-如何配置"><a href="#1-如何配置" class="headerlink" title="1.如何配置"></a>1.如何配置</h2><p> 例子：<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      http</span><br><span class="line">          .authorizeRequests()</span><br><span class="line">              .antMatchers(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;/home&quot;</span>).permitAll()</span><br><span class="line">              .anyRequest().authenticated()</span><br><span class="line">              .and()</span><br><span class="line">          .formLogin()</span><br><span class="line">              .loginPage(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">              .permitAll()</span><br><span class="line">              .and()</span><br><span class="line">          .logout()</span><br><span class="line">              .permitAll();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureGlobal</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">      auth</span><br><span class="line">          .inMemoryAuthentication()</span><br><span class="line">              .withUser(<span class="string">&quot;admin&quot;</span>).password(<span class="string">&quot;admin&quot;</span>).roles(<span class="string">&quot;USER&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+                <h1 id="spring-security-05-核心配置解读"><a href="#spring-security-05-核心配置解读" class="headerlink" title="spring-security-05-核心配置解读"></a>spring-security-05-核心配置解读</h1><h2 id="1-如何配置"><a href="#1-如何配置" class="headerlink" title="1.如何配置"></a>1.如何配置</h2><p> 例子：<br> <pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+      http
+          <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token string">"/home"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">formLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">loginPage</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token annotation punctuation">@Autowired</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureGlobal</span><span class="token punctuation">(</span><span class="token class-name">AuthenticationManagerBuilder</span> auth<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+      auth
+          <span class="token punctuation">.</span><span class="token function">inMemoryAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+              <span class="token punctuation">.</span><span class="token function">withUser</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">password</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">roles</span><span class="token punctuation">(</span><span class="token string">"USER"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></p>
 <ul>
 <li>当配置了上述的javaconfig之后，我们的应用便具备了如下的功能：<blockquote>
 <ol>
@@ -487,20 +454,52 @@
 </ul>
 <p>其他的高级配法还需要多多研究。</p>
 <h2 id="2-注解探究"><a href="#2-注解探究" class="headerlink" title="2. 注解探究"></a>2. 注解探究</h2><p>@EnableWebSecurity</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(&#123; WebSecurityConfiguration.class, // &lt;2&gt;</span></span><br><span class="line"><span class="meta">      SpringWebMvcImportSelector.class &#125;)</span> <span class="comment">// &lt;1&gt;</span></span><br><span class="line"><span class="meta">@EnableGlobalAuthentication</span> <span class="comment">// &lt;3&gt;</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableWebSecurity &#123;</span><br><span class="line">   <span class="function"><span class="keyword">boolean</span> <span class="title">debug</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">false</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> <span class="token class-name">WebSecurityConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token comment">// &lt;2></span>
+      <span class="token class-name">SpringWebMvcImportSelector</span><span class="token punctuation">.</span><span class="token keyword">class</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span> <span class="token comment">// &lt;1></span>
+<span class="token annotation punctuation">@EnableGlobalAuthentication</span> <span class="token comment">// &lt;3></span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">EnableWebSecurity</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">boolean</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol>
 <li>SpringWebMvcImportSelector的作用是判断当前的环境是否包含springmvc，因为spring security可以在非spring环境下使用，为了避免DispatcherServlet的重复配置，所以使用了这个注解来区分。</li>
 <li>WebSecurityConfiguration顾名思义，是用来配置web安全的，下面的小节会详细介绍。</li>
 <li>@EnableGlobalAuthentication注解的源码如下：</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import(AuthenticationConfiguration.class)</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableGlobalAuthentication &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token class-name">AuthenticationConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token annotation punctuation">@interface</span> <span class="token class-name">EnableGlobalAuthentication</span> <span class="token punctuation">&#123;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>注意点同样在@Import之中，它实际上激活了AuthenticationConfiguration这样的一个配置类，用来配置认证相关的核心类。</p>
 <p>也就是说：@EnableWebSecurity完成的工作便是加载了WebSecurityConfiguration，AuthenticationConfiguration这两个核心配置类，也就此将spring security的职责划分为了配置安全信息，配置认证信息两部分。</p>
-<h3 id="2-1-WebSecurityConfiguration"><a href="#2-1-WebSecurityConfiguration" class="headerlink" title="2.1 WebSecurityConfiguration"></a>2.1 WebSecurityConfiguration</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//DEFAULT_FILTER_NAME = &quot;springSecurityFilterChain&quot;</span></span><br><span class="line">	<span class="meta">@Bean(name = AbstractSecurityWebApplicationInitializer.DEFAULT_FILTER_NAME)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Filter <span class="title">springSecurityFilterChain</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    	...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-WebSecurityConfiguration"><a href="#2-1-WebSecurityConfiguration" class="headerlink" title="2.1 WebSecurityConfiguration"></a>2.1 WebSecurityConfiguration</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfiguration</span> <span class="token punctuation">&#123;</span>
+
+	<span class="token comment">//DEFAULT_FILTER_NAME = "springSecurityFilterChain"</span>
+	<span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token class-name">AbstractSecurityWebApplicationInitializer</span><span class="token punctuation">.</span>DEFAULT_FILTER_NAME<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Filter</span> <span class="token function">springSecurityFilterChain</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+    	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">&#125;</span>
+
+ <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>WebSecurityConfiguration中完成了声明springSecurityFilterChain的作用，并且最终交给DelegatingFilterProxy这个代理类，负责拦截请求（注意DelegatingFilterProxy这个类不是spring security包中的，而是存在于web包中，spring使用了代理模式来实现安全过滤的解耦）</p>
 <p>声明了安全相关的过滤器</p>
-<h3 id="2-2-AuthenticationConfiguration"><a href="#2-2-AuthenticationConfiguration" class="headerlink" title="2.2 AuthenticationConfiguration"></a>2.2 AuthenticationConfiguration</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import(ObjectPostProcessorConfiguration.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthenticationConfiguration</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  	<span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> AuthenticationManagerBuilder <span class="title">authenticationManagerBuilder</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">			ObjectPostProcessor&lt;Object&gt; objectPostProcessor)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> AuthenticationManagerBuilder(objectPostProcessor);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  	<span class="function"><span class="keyword">public</span> AuthenticationManager <span class="title">getAuthenticationManager</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    	...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-AuthenticationConfiguration"><a href="#2-2-AuthenticationConfiguration" class="headerlink" title="2.2 AuthenticationConfiguration"></a>2.2 AuthenticationConfiguration</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token class-name">ObjectPostProcessorConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AuthenticationConfiguration</span> <span class="token punctuation">&#123;</span>
+
+  	<span class="token annotation punctuation">@Bean</span>
+	<span class="token keyword">public</span> <span class="token class-name">AuthenticationManagerBuilder</span> <span class="token function">authenticationManagerBuilder</span><span class="token punctuation">(</span>
+			<span class="token class-name">ObjectPostProcessor</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> objectPostProcessor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">AuthenticationManagerBuilder</span><span class="token punctuation">(</span>objectPostProcessor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+  	<span class="token keyword">public</span> <span class="token class-name">AuthenticationManager</span> <span class="token function">getAuthenticationManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+    	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>AuthenticationConfiguration的主要任务，便是负责生成全局的身份认证管理者AuthenticationManager。</p>
 <p>我们之前探究的AuthenticationManager认证管理器就是在这初始化</p>
 <h3 id="2-3-WebSecurityConfigurerAdapter"><a href="#2-3-WebSecurityConfigurerAdapter" class="headerlink" title="2.3 WebSecurityConfigurerAdapter"></a>2.3 WebSecurityConfigurerAdapter</h3><blockquote>
@@ -509,7 +508,35 @@
 <ol>
 <li>HttpSecurity常用配置</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomWebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">&quot;/resources/**&quot;</span>, <span class="string">&quot;/signup&quot;</span>, <span class="string">&quot;/about&quot;</span>).permitAll()</span><br><span class="line">                .antMatchers(<span class="string">&quot;/admin/**&quot;</span>).hasRole(<span class="string">&quot;ADMIN&quot;</span>)</span><br><span class="line">                .antMatchers(<span class="string">&quot;/db/**&quot;</span>).access(<span class="string">&quot;hasRole(&#x27;ADMIN&#x27;) and hasRole(&#x27;DBA&#x27;)&quot;</span>)</span><br><span class="line">                .anyRequest().authenticated()</span><br><span class="line">                .and()</span><br><span class="line">            .formLogin()</span><br><span class="line">                .usernameParameter(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">                .passwordParameter(<span class="string">&quot;password&quot;</span>)</span><br><span class="line">                .failureForwardUrl(<span class="string">&quot;/login?error&quot;</span>)</span><br><span class="line">                .loginPage(<span class="string">&quot;/login&quot;</span>)</span><br><span class="line">                .permitAll()</span><br><span class="line">                .and()</span><br><span class="line">            .logout()</span><br><span class="line">                .logoutUrl(<span class="string">&quot;/logout&quot;</span>)</span><br><span class="line">                .logoutSuccessUrl(<span class="string">&quot;/index&quot;</span>)</span><br><span class="line">                .permitAll()</span><br><span class="line">                .and()</span><br><span class="line">            .httpBasic()</span><br><span class="line">                .disable();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CustomWebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        http
+            <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/resources/**"</span><span class="token punctuation">,</span> <span class="token string">"/signup"</span><span class="token punctuation">,</span> <span class="token string">"/about"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/admin/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">hasRole</span><span class="token punctuation">(</span><span class="token string">"ADMIN"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/db/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">access</span><span class="token punctuation">(</span><span class="token string">"hasRole('ADMIN') and hasRole('DBA')"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">formLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">usernameParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">passwordParameter</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">failureForwardUrl</span><span class="token punctuation">(</span><span class="token string">"/login?error"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">loginPage</span><span class="token punctuation">(</span><span class="token string">"/login"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">logoutUrl</span><span class="token punctuation">(</span><span class="token string">"/logout"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">logoutSuccessUrl</span><span class="token punctuation">(</span><span class="token string">"/index"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">httpBasic</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>他们配置的含义也非常容易通过变量本身来推测，</p>
 <ul>
@@ -522,12 +549,30 @@
 <li>WebSecurityBuilder</li>
 </ol>
 <p>这一部分比较少配置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(WebSecurity web)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        web</span><br><span class="line">            .ignoring()</span><br><span class="line">            .antMatchers(<span class="string">&quot;/resources/**&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">WebSecurity</span> web<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">&#123;</span>
+        web
+            <span class="token punctuation">.</span><span class="token function">ignoring</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/resources/**"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>AuthenticationManagerBuilder</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 全局用户信息 比如增加验证器。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> </span>&#123;</span><br><span class="line">	PasswordAuthenticationProvider provider = <span class="keyword">new</span> PasswordAuthenticationProvider();</span><br><span class="line">	provider.setPasswordEncoder(passwordEncoder);</span><br><span class="line">	provider.setUserDetailsServiceFactory(userDetailsServiceFactory);</span><br><span class="line">	auth.authenticationProvider(provider);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 全局用户信息 比如增加验证器。
+ */</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">AuthenticationManagerBuilder</span> auth<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token class-name">PasswordAuthenticationProvider</span> provider <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PasswordAuthenticationProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	provider<span class="token punctuation">.</span><span class="token function">setPasswordEncoder</span><span class="token punctuation">(</span>passwordEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	provider<span class="token punctuation">.</span><span class="token function">setUserDetailsServiceFactory</span><span class="token punctuation">(</span>userDetailsServiceFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	auth<span class="token punctuation">.</span><span class="token function">authenticationProvider</span><span class="token punctuation">(</span>provider<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -544,7 +589,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">韩长庆</a>
+                    <a href="/about" rel="external nofollow noreferrer">牡蛎壳</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -567,7 +612,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">韩长庆</a>
+                    <a href="/about" target="_blank">牡蛎壳</a>
                     !
                 </span>
             </div>
@@ -793,7 +838,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            韩长庆
+                            牡蛎壳
                             
                         </span>
                     </div>
@@ -838,7 +883,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            韩长庆
+                            牡蛎壳
                             
                         </span>
                     </div>
@@ -1032,13 +1077,13 @@
             
                 <span id="year">2019-2022</span>
             
-            <a href="/about" target="_blank">韩长庆</a>
+            <a href="/about" target="_blank">牡蛎壳</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">81.3k</span>
+                        class="white-color">79.7k</span>
             
             
             
@@ -1221,6 +1266,14 @@ $(function () {
     
 
     <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
     
 
     <!-- 鼠标星星特效 -->

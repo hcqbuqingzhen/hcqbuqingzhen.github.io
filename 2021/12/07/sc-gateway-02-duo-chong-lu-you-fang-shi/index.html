@@ -6,7 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="spring-cloud-gateway的多种路由实现方式, mystyle">
     <meta name="description" content="02 spring-cloud-gateway的多种路由实现方式我们已经实现了sc-gateway的基本路由方式，在这种方式中：如下。
-1234567891011121314151617181920212223242526272829303">
+server:
+  #服务端口
+  port: 8081
+spring:
+  application:
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -59,7 +64,7 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>Index</span>
+      <span>首页</span>
     </a>
     
   </li>
@@ -70,7 +75,7 @@
       
       <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>Tags</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -81,7 +86,7 @@
       
       <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
-      <span>Categories</span>
+      <span>分类</span>
     </a>
     
   </li>
@@ -92,7 +97,7 @@
       
       <i class="fas fa-archive" style="zoom: 0.6;"></i>
       
-      <span>Archives</span>
+      <span>归档</span>
     </a>
     
   </li>
@@ -103,7 +108,7 @@
       
       <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>About</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -114,7 +119,7 @@
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
-      <span>Contact</span>
+      <span>评论</span>
     </a>
     
   </li>
@@ -125,7 +130,7 @@
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
-      <span>Friends</span>
+      <span>友情链接</span>
     </a>
     
   </li>
@@ -160,7 +165,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			Index
+			首页
 		</a>
           
         </li>
@@ -171,7 +176,7 @@
 			
 			    <i class="fa-fw fas fa-tags"></i>
 			
-			Tags
+			标签
 		</a>
           
         </li>
@@ -182,7 +187,7 @@
 			
 			    <i class="fa-fw fas fa-bookmark"></i>
 			
-			Categories
+			分类
 		</a>
           
         </li>
@@ -193,7 +198,7 @@
 			
 			    <i class="fa-fw fas fa-archive"></i>
 			
-			Archives
+			归档
 		</a>
           
         </li>
@@ -204,7 +209,7 @@
 			
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			About
+			关于
 		</a>
           
         </li>
@@ -215,7 +220,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			Contact
+			评论
 		</a>
           
         </li>
@@ -226,18 +231,11 @@
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
-			Friends
+			友情链接
 		</a>
           
         </li>
         
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
         
     </ul>
 </div>
@@ -245,62 +243,6 @@
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -456,7 +398,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    828
+                    870
                 </div>
                 
 
@@ -468,27 +410,127 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="02-spring-cloud-gateway的多种路由实现方式"><a href="#02-spring-cloud-gateway的多种路由实现方式" class="headerlink" title="02 spring-cloud-gateway的多种路由实现方式"></a>02 spring-cloud-gateway的多种路由实现方式</h2><p>我们已经实现了sc-gateway的基本路由方式，在这种方式中：如下。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="comment">#服务端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">sc-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">path_route</span></span><br><span class="line">          <span class="comment"># 匹配成功后，会被转发到8082端口，至于端口后面的path，会直接使用原始请求的</span></span><br><span class="line">          <span class="comment"># 例如http://127.0.0.1:8081/hello/str，会被转发到http://127.0.0.1:8082/hello/str</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://127.0.0.1:8082</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="comment"># 根据请求路径中带有&quot;/hello/&quot;，就算匹配成功</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">Path=/hello/**</span></span><br><span class="line"></span><br><span class="line"><span class="string">```</span>  </span><br><span class="line"><span class="string">我们把uri,和对应路由的规则写死了，如果只有几台机器这很好管理。但在微服务中，一个服务有很多实例，同时又有很多服务运行。服务的扩容缩容，又会让url变化。因此这种方式在生产中是是很难去配置的。好在我们有注册中心来帮我们实现服务的注册和发现。uri可以用服务名来代替，服务消费之从注册中心得到实时的服务地址（scgateway可以看作其他服务的消费者）。</span>   </span><br><span class="line"></span><br><span class="line"><span class="comment">### 1.使用服务名来配置</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">在hello工程中添加一个控制器</span></span><br><span class="line"></span><br><span class="line"><span class="string">```java</span></span><br><span class="line"><span class="string">import</span> <span class="string">com.bolingcavalry.common.Constants;</span></span><br><span class="line"><span class="string">import</span> <span class="string">org.springframework.web.bind.annotation.GetMapping;</span></span><br><span class="line"><span class="string">import</span> <span class="string">org.springframework.web.bind.annotation.RequestMapping;</span></span><br><span class="line"><span class="string">import</span> <span class="string">org.springframework.web.bind.annotation.RestController;</span></span><br><span class="line"><span class="string">import</span> <span class="string">java.text.SimpleDateFormat;</span></span><br><span class="line"><span class="string">import</span> <span class="string">java.util.Date;</span></span><br><span class="line"></span><br><span class="line"><span class="string">@RestController</span></span><br><span class="line"><span class="string">@RequestMapping(&quot;/lbtest&quot;)</span></span><br><span class="line"><span class="string">public</span> <span class="string">class</span> <span class="string">LBTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="string">private</span> <span class="string">String</span> <span class="string">dateStr()</span>&#123;</span><br><span class="line">        <span class="string">return</span> <span class="string">new</span> <span class="string">SimpleDateFormat(&quot;yyyy-MM-dd</span> <span class="string">hh:mm:ss&quot;).format(new</span> <span class="string">Date());</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="string">/**</span></span><br><span class="line">     <span class="string">*</span> <span class="string">返回字符串类型</span></span><br><span class="line">     <span class="string">*</span> <span class="string">@return</span></span><br><span class="line">     <span class="string">*/</span></span><br><span class="line">    <span class="string">@GetMapping(&quot;/str&quot;)</span></span><br><span class="line">    <span class="string">public</span> <span class="string">String</span> <span class="string">helloStr()</span> &#123;</span><br><span class="line">        <span class="string">return</span> <span class="string">Constants.LB_PREFIX</span> <span class="string">+</span> <span class="string">&quot;, &quot;</span> <span class="string">+</span> <span class="string">dateStr();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">server:
+  #服务端口
+  port: 8081
+spring:
+  application:
+    name: sc-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          # 匹配成功后，会被转发到8082端口，至于端口后面的path，会直接使用原始请求的
+          # 例如http:&#x2F;&#x2F;127.0.0.1:8081&#x2F;hello&#x2F;str，会被转发到http:&#x2F;&#x2F;127.0.0.1:8082&#x2F;hello&#x2F;str
+          uri: http:&#x2F;&#x2F;127.0.0.1:8082
+          predicates:
+            # 根据请求路径中带有&quot;&#x2F;hello&#x2F;&quot;，就算匹配成功
+          - Path&#x3D;&#x2F;hello&#x2F;**
+
+&#96;&#96;&#96;  
+我们把uri,和对应路由的规则写死了，如果只有几台机器这很好管理。但在微服务中，一个服务有很多实例，同时又有很多服务运行。服务的扩容缩容，又会让url变化。因此这种方式在生产中是是很难去配置的。好在我们有注册中心来帮我们实现服务的注册和发现。uri可以用服务名来代替，服务消费之从注册中心得到实时的服务地址（scgateway可以看作其他服务的消费者）。   
+
+### 1.使用服务名来配置
+- 在hello工程中添加一个控制器
+
+&#96;&#96;&#96;java
+import com.bolingcavalry.common.Constants;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+@RestController
+@RequestMapping(&quot;&#x2F;lbtest&quot;)
+public class LBTest &#123;
+
+    private String dateStr()&#123;
+        return new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;).format(new Date());
+    &#125;
+
+    &#x2F;**
+     * 返回字符串类型
+     * @return
+     *&#x2F;
+    @GetMapping(&quot;&#x2F;str&quot;)
+    public String helloStr() &#123;
+        return Constants.LB_PREFIX + &quot;, &quot; + dateStr();
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>common模块下的常量</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Constants</span> </span>&#123;</span><br><span class="line">    String HELLO_PREFIX = <span class="string">&quot;Hello World&quot;</span>;</span><br><span class="line">    String LB_PREFIX = <span class="string">&quot;Load balance&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Constants</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> HELLO_PREFIX <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> LB_PREFIX <span class="token operator">=</span> <span class="token string">"Load balance"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>sc-gateway yml</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="comment">#服务端口</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8082</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">sc-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="comment"># 注册中心的配置</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">path_route_lb</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://provider-hello</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">Path=/lbtest/**</span></span><br><span class="line"><span class="string">```</span>  </span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="string">启动nacos,同时启动sc-gateway和hello</span>   </span><br><span class="line">  <span class="string">访问8081:/lbtest/str</span> <span class="string">会被转发到</span> <span class="number">8082</span><span class="string">:/lbtest/str</span>  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### 2. nacos配置实现</span></span><br><span class="line"></span><br><span class="line"><span class="string">我们在nacos中建立一个配置，名字和和网关服务的名字相同，加上对应的后缀。</span>  </span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="string">配置如下</span>  </span><br><span class="line"><span class="string">```yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">path_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://127.0.0.1:8082</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="comment"># 根据请求路径中带有&quot;/hello/&quot;，就算匹配成功</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/hello/**</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">server:
+  #服务端口
+  port: 8082
+spring:
+  application:
+    name: sc-gateway
+  cloud:
+    nacos:
+      # 注册中心的配置
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      routes:
+        - id: path_route_lb
+          uri: lb:&#x2F;&#x2F;provider-hello
+          predicates:
+          - Path&#x3D;&#x2F;lbtest&#x2F;**
+&#96;&#96;&#96;  
+
+- 启动nacos,同时启动sc-gateway和hello   
+  访问8081:&#x2F;lbtest&#x2F;str 会被转发到 8082:&#x2F;lbtest&#x2F;str  
+
+
+### 2. nacos配置实现
+
+我们在nacos中建立一个配置，名字和和网关服务的名字相同，加上对应的后缀。  
+
+- 配置如下  
+&#96;&#96;&#96;yml
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: http:&#x2F;&#x2F;127.0.0.1:8082
+          predicates:
+            # 根据请求路径中带有&quot;&#x2F;hello&#x2F;&quot;，就算匹配成功
+            - Path&#x3D;&#x2F;hello&#x2F;**
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>同时本地增加 bootstrap.yml</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">sc-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yml</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">DEFAULT_GROUP</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">spring:
+  application:
+    name: sc-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        group: DEFAULT_GROUP
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>tips：spring 启动时读取的顺序为 </p>
 <ul>
@@ -498,7 +540,29 @@
 </ul>
 <p>现在访问8081:/hello/str 会被转发到 8082:/hello/str </p>
 <h3 id="3-写代码的方式配置"><a href="#3-写代码的方式配置" class="headerlink" title="3.写代码的方式配置"></a>3.写代码的方式配置</h3><ul>
-<li>可以在sc-gateway中添加如下配置类，返回一个routeLocator类<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.RouteLocator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RouteConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customizeRoute</span><span class="params">(RouteLocatorBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> builder</span><br><span class="line">                .routes()</span><br><span class="line">                .route(</span><br><span class="line">                            <span class="comment">// 第一个参数是路由的唯一身份</span></span><br><span class="line">                        <span class="string">&quot;path_route_lb&quot;</span>,</span><br><span class="line">                            <span class="comment">// 第二个参数是个lambda实现，</span></span><br><span class="line">                            <span class="comment">// 设置了配套条件是按照请求路径匹配，以及转发地址，</span></span><br><span class="line">                            <span class="comment">// 注意lb://表示这是个服务名，要从</span></span><br><span class="line">                            r -&gt; r.path(<span class="string">&quot;/lbtest/**&quot;</span>).uri(<span class="string">&quot;lb://provider-hello&quot;</span>)</span><br><span class="line">                )</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>可以在sc-gateway中添加如下配置类，返回一个routeLocator类<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>gateway<span class="token punctuation">.</span>route<span class="token punctuation">.</span></span><span class="token class-name">RouteLocator</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>gateway<span class="token punctuation">.</span>route<span class="token punctuation">.</span>builder<span class="token punctuation">.</span></span><span class="token class-name">RouteLocatorBuilder</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RouteConfig</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">RouteLocator</span> <span class="token function">customizeRoute</span><span class="token punctuation">(</span><span class="token class-name">RouteLocatorBuilder</span> builder<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> builder
+                <span class="token punctuation">.</span><span class="token function">routes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span>
+                            <span class="token comment">// 第一个参数是路由的唯一身份</span>
+                        <span class="token string">"path_route_lb"</span><span class="token punctuation">,</span>
+                            <span class="token comment">// 第二个参数是个lambda实现，</span>
+                            <span class="token comment">// 设置了配套条件是按照请求路径匹配，以及转发地址，</span>
+                            <span class="token comment">// 注意lb://表示这是个服务名，要从</span>
+                            r <span class="token operator">-></span> r<span class="token punctuation">.</span><span class="token function">path</span><span class="token punctuation">(</span><span class="token string">"/lbtest/**"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">uri</span><span class="token punctuation">(</span><span class="token string">"lb://provider-hello"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <p>我们删掉nacos中的配置，然后重启，会发现也会转发成功。</p>
 <p>缺陷 </p>
@@ -522,7 +586,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">韩长庆</a>
+                    <a href="/about" rel="external nofollow noreferrer">牡蛎壳</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -545,7 +609,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">韩长庆</a>
+                    <a href="/about" target="_blank">牡蛎壳</a>
                     !
                 </span>
             </div>
@@ -771,7 +835,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            韩长庆
+                            牡蛎壳
                             
                         </span>
                     </div>
@@ -816,7 +880,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            韩长庆
+                            牡蛎壳
                             
                         </span>
                     </div>
@@ -1010,13 +1074,13 @@
             
                 <span id="year">2019-2022</span>
             
-            <a href="/about" target="_blank">韩长庆</a>
+            <a href="/about" target="_blank">牡蛎壳</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">81.3k</span>
+                        class="white-color">79.7k</span>
             
             
             
@@ -1199,6 +1263,14 @@ $(function () {
     
 
     <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
     
 
     <!-- 鼠标星星特效 -->
