@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mongodb安装和集群搭建, mystyle">
+    <meta name="keywords" content="为linux添加人脸认证, mystyle">
     <meta name="description" content="为linux添加人脸认证
 
 deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,那么对于其他linux版本,有没有类似的功能呢?
@@ -25,7 +25,7 @@ deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,�
 
     
 
-    <title>mongodb安装和集群搭建 | mystyle</title>
+    <title>为linux添加人脸认证 | mystyle</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -252,12 +252,12 @@ deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mongodb安装和集群搭建</h1>
+                    <h1 class="description center-align post-title">为linux添加人脸认证</h1>
                 </div>
             </div>
         </div>
@@ -398,7 +398,7 @@ deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    614
+                    579
                 </div>
                 
 
@@ -445,18 +445,16 @@ sudo dnf --refresh install howdy<span aria-hidden="true" class="line-numbers-row
 </ol>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;pam.d&#x2F;sudo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>增加 </p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py
-&#96;&#96;&#96;&#96;
-[![OzcajI.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2022&#x2F;05&#x2F;22&#x2F;OzcajI.png)](https:&#x2F;&#x2F;imgtu.com&#x2F;i&#x2F;OzcajI)
-
-
-2. 为锁屏启用
-
-&#96;&#96;&#96;shell
-sudo vim &#x2F;etc&#x2F;pam.d&#x2F;system-local-login<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OzcajI"><img src="https://s1.ax1x.com/2022/05/22/OzcajI.png" alt="OzcajI.png"></a></p>
+<ol start="2">
+<li>为锁屏启用</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;pam.d&#x2F;system-local-login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>增加</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OzgfRH"><img src="https://s1.ax1x.com/2022/05/22/OzgfRH.png" alt="OzgfRH.png"></a></p>
 <ol start="3">
 <li>如果要为登陆界面启用可以使用<blockquote>
@@ -496,9 +494,8 @@ capture_successful &#x3D; false<span aria-hidden="true" class="line-numbers-rows
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OzRIVP"><img src="https://s1.ax1x.com/2022/05/22/OzRIVP.png" alt="OzRIVP.png"></a></p>
 <ol start="3">
 <li>使用和测试<br>当使用sudo 命令时,不输入密码直接按enter会发现,可以执行sudo命令.</li>
-<li>终端里有 GStreamer warnings<br>临时解决方案是向全局或者每个用户加入OPENCV_LOG_LEVEL=ERROR 这个环境变量。</li>
+<li>终端里有 GStreamer warnings<br>临时解决方案是向全局或者每个用户加入OPENCV_LOG_LEVEL=ERROR 这个环境变量。<br>可以在zsh或bash的配置文件中增加,也可以在profile文件中增加</li>
 </ol>
-<p>可以在zsh或bash的配置文件中增加,也可以在profile文件中增加</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
 <li>howdy在不同发行版上都有,装起来也比较方便.</li>
 <li>使用howdy要修改操作对应的配置文件</li>
@@ -752,9 +749,9 @@ capture_successful &#x3D; false<span aria-hidden="true" class="line-numbers-rows
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mongodb安装和集群搭建">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="为linux添加人脸认证">
                         
-                        <span class="card-title">mongodb安装和集群搭建</span>
+                        <span class="card-title">为linux添加人脸认证</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
