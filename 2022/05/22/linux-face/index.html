@@ -4,13 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="spring-cloud-gateway-限流过滤器, mystyle">
-    <meta name="description" content="限流过滤器
-在6中我们看到了很多过滤器，但没有这篇讲的这个。
-RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
+    <meta name="keywords" content="mongodb安装和集群搭建, mystyle">
+    <meta name="description" content="为linux添加人脸认证
 
-1. 关于限流
-默认的限流器是基于redis实现">
+deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,那么对于其他linux版本,有没有类似的功能呢?
+答案是有的,让Linux拥有类似Windows Hello的体验,使用Howdy即可.
+
+
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +25,7 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
 
     
 
-    <title>spring-cloud-gateway-限流过滤器 | mystyle</title>
+    <title>mongodb安装和集群搭建 | mystyle</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -251,12 +252,12 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">spring-cloud-gateway-限流过滤器</h1>
+                    <h1 class="description center-align post-title">mongodb安装和集群搭建</h1>
                 </div>
             </div>
         </div>
@@ -372,8 +373,8 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/spring-cloud-gateway/">
-                                <span class="chip bg-color">spring-cloud-gateway</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
                             </a>
                         
                     </div>
@@ -388,7 +389,7 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-12-15
+                    2022-05-22
                 </div>
                 
 
@@ -397,7 +398,7 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    656
+                    614
                 </div>
                 
 
@@ -417,106 +418,92 @@ RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="限流过滤器"><a href="#限流过滤器" class="headerlink" title="限流过滤器"></a>限流过滤器</h1><ul>
-<li>在6中我们看到了很多过滤器，但没有这篇讲的这个。</li>
-<li>RequestRateLimiter 限流，RequestRateLimiterGatewayFilterFactory生成。</li>
-</ul>
-<h2 id="1-关于限流"><a href="#1-关于限流" class="headerlink" title="1. 关于限流"></a>1. 关于限流</h2><ul>
-<li><p>默认的限流器是基于redis实现的，限流算法令牌桶（Token Bucket Algorithm）,关于令牌捅的原理就不在此展开了，</p>
-</li>
-<li><p>装令牌的桶容量有限，例如最多20个，令牌进入桶的速度恒定（注意，这里是和漏桶算法的区别），例如每秒10个，底部每个请求能拿到令牌才会被处理：</p>
-<p>  <img src="/2021/12/15/sc-gateway-09-guo-lu-qi-xian-liu-guo-lu-qi/lpt.jpg" alt="令牌桶"></p>
-</li>
-</ul>
-<h2 id="2-使用RequestRateLimiter过滤器的步骤"><a href="#2-使用RequestRateLimiter过滤器的步骤" class="headerlink" title="2. 使用RequestRateLimiter过滤器的步骤"></a>2. 使用RequestRateLimiter过滤器的步骤</h2><ol>
-<li>准备可用的redis </li>
-<li>maven或者gradle中添加依赖org.springframework.boot:spring-boot-starter-data-redis-reactive</li>
-<li>确定按照什么维度限流，例如按照请求中的username参数限流，这是通过编写KeyResolver接口的实现来完成的</li>
-<li>配置application.yml文件，添加过滤器</li>
-</ol>
-<h2 id="3-实现"><a href="#3-实现" class="headerlink" title="3. 实现"></a>3. 实现</h2><ol>
-<li>添加一个接口<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserInfoController</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">dateStr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd hh:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/userinfo"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">userInfo</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> username<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token class-name">Constants</span><span class="token punctuation">.</span>HELLO_PREFIX <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> username <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> <span class="token function">dateStr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>xml新增<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-redis-reactive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>application.yml<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">server:
-  #服务端口
-  port: 8081
-spring:
-  application:
-    name: circuitbreaker-gateway
-  # redis配置
-  redis:
-    host: 127.0.0.1
-    port: 6379
-
-  cloud:
-    gateway:
-      routes:
-        - id: path_route
-          uri: http:&#x2F;&#x2F;127.0.0.1:8082
-          predicates:
-            - Path&#x3D;&#x2F;hello&#x2F;**
-          filters:
-            - name: RequestRateLimiter
-              args:
-              	# 令牌入桶的速度为每秒100个，相当于QPS
-                redis-rate-limiter.replenishRate: 100
-                # 桶内能装200个令牌，相当于峰值，要注意的是：第一秒从桶内能去200个，但是第二秒只能取到100个了，因为入桶速度是每秒100个
-                redis-rate-limiter.burstCapacity: 200
-                # 每个请求需要的令牌数
-                redis-rate-limiter.requestedTokens: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>指定限流维度的代码CustomizeConfig.java，</li>
-</ol>
+                <h1 id="为linux添加人脸认证"><a href="#为linux添加人脸认证" class="headerlink" title="为linux添加人脸认证"></a>为linux添加人脸认证</h1><blockquote>
 <ul>
-<li>这里是根据请求参数username的值来限流的，假设真实请求中一半请求的username的等于Tom，另一半的username的等于Jerry，按照application.yml的配置，Tom的请求QPS为100，Jerry的QPS也是100</li>
+<li>deepin的最新版本已经支持了人脸登陆,linux的东西都是开源的,那么对于其他linux版本,有没有类似的功能呢?</li>
+<li>答案是有的,让Linux拥有类似Windows Hello的体验,使用Howdy即可.</li>
 </ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>bolingcavalry<span class="token punctuation">.</span>gateway<span class="token punctuation">.</span>config</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>gateway<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>ratelimit<span class="token punctuation">.</span></span><span class="token class-name">KeyResolver</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Configuration</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">reactor<span class="token punctuation">.</span>core<span class="token punctuation">.</span>publisher<span class="token punctuation">.</span></span><span class="token class-name">Mono</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Objects</span><span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CustomizeConfig</span> <span class="token punctuation">&#123;</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token class-name">KeyResolver</span> <span class="token function">userKeyResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> exchange <span class="token operator">-></span> <span class="token class-name">Mono</span><span class="token punctuation">.</span><span class="token function">just</span><span class="token punctuation">(</span>exchange<span class="token punctuation">.</span><span class="token function">getRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getQueryParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getFirst</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="4-验证"><a href="#4-验证" class="headerlink" title="4. 验证"></a>4. 验证</h2><ol>
-<li>确保redis已经启动，并且与application.yml中的配置保持一直</li>
-<li>启动nacos（provider-hello依赖）</li>
-<li>启动服务提供者provider-hello</li>
-<li>启动gateway</li>
-<li>为了模拟web请求，这里使用了Apache Benchmark</li>
-</ol>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/boltgolt/howdy">Howdy</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Howdy的github页面上介绍了各个发行版的安装方法,</p>
 <ul>
-<li><p>安装的话 linux下发行版里一般有</p>
-<p>  <img src="/2021/12/15/sc-gateway-09-guo-lu-qi-xian-liu-guo-lu-qi/sc-gateway-09-%E8%BF%87%E6%BB%A4%E5%99%A8-%E9%99%90%E6%B5%81%E8%BF%87%E6%BB%A4%E5%99%A8apdab.jpg" alt="apqab"></p>
-</li>
+<li>对于archlinux</li>
 </ul>
-<p>执行如下命令</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ab -n 10000  -c 2 http:&#x2F;&#x2F;localhost:8081&#x2F;userinfo&#x2F;userinfo?username&#x3D;Tom
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yay -S howdy <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Ubuntu <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo add-apt-repository ppa:boltgolt&#x2F;howdy
+sudo apt update
+sudo apt install howdy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li>红帽系<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo dnf copr enable principis&#x2F;howdy
+sudo dnf --refresh install howdy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>openSUSE<br>可以去github上详细查看.</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>每个发行版下配置的方式不同</p>
+<p>以archlinux为例吧,arch的wiki文档很丰富,汲取前人的经验照着做即可.</p>
+<ol>
+<li>为sudo启用howdy认证</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;pam.d&#x2F;sudo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>增加 </p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py
+&#96;&#96;&#96;&#96;
+[![OzcajI.png](https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2022&#x2F;05&#x2F;22&#x2F;OzcajI.png)](https:&#x2F;&#x2F;imgtu.com&#x2F;i&#x2F;OzcajI)
 
-<p>  <img src="/2021/12/15/sc-gateway-09-guo-lu-qi-xian-liu-guo-lu-qi/xianliu1.jpg" alt="xianliu"></p>
-<p>可以看到，100个请求只成功了20个。  </p>
+
+2. 为锁屏启用
+
+&#96;&#96;&#96;shell
+sudo vim &#x2F;etc&#x2F;pam.d&#x2F;system-local-login<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>增加</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OzgfRH"><img src="https://s1.ax1x.com/2022/05/22/OzgfRH.png" alt="OzgfRH.png"></a></p>
+<ol start="3">
+<li>如果要为登陆界面启用可以使用<blockquote>
+<p>这个要看自己的使用的gdm还是sddm</p>
+</blockquote>
+</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;pam.d&#x2F;sddm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>增加</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">auth sufficient pam_python.so &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;pam.py<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我建议是只对sudo和锁屏后解锁启用<br>详细见<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Howdy_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">wiki</a></p>
+<h2 id="添加正确的红外传感器"><a href="#添加正确的红外传感器" class="headerlink" title="添加正确的红外传感器"></a>添加正确的红外传感器</h2><ol>
+<li>确认摄像头设备名</li>
+</ol>
+<p>摄像头的文件名多为/dev/video0,/dev/video1,等等.可以通过工具确认,也可以自己尝试后确定.</p>
+<ol start="2">
+<li>修改howdy配置文件<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">vim &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;config.ini<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/Oz2lFO"><img src="https://s1.ax1x.com/2022/05/22/Oz2lFO.png" alt="Oz2lFO.png"></a></p>
+<ol start="3">
+<li>测试<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">suod howdy test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<a target="_blank" rel="noopener" href="https://imgtu.com/i/OzR1H0"><img src="https://s1.ax1x.com/2022/05/22/OzR1H0.png" alt="OzR1H0.png"></a></li>
+</ol>
+<h2 id="增加人脸模型并使用"><a href="#增加人脸模型并使用" class="headerlink" title="增加人脸模型并使用"></a>增加人脸模型并使用</h2><ol>
+<li>人脸增加<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo howdy add <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>其他配置</li>
+</ol>
+<p>默认每次增加和识别都会拍一张照片存起来,可以配置关闭</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;lib&#x2F;security&#x2F;howdy&#x2F;config.ini
+
+#### 
+[snapshots]
+capture_failed &#x3D; false
+capture_successful &#x3D; false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/OzRIVP"><img src="https://s1.ax1x.com/2022/05/22/OzRIVP.png" alt="OzRIVP.png"></a></p>
+<ol start="3">
+<li>使用和测试<br>当使用sudo 命令时,不输入密码直接按enter会发现,可以执行sudo命令.</li>
+<li>终端里有 GStreamer warnings<br>临时解决方案是向全局或者每个用户加入OPENCV_LOG_LEVEL=ERROR 这个环境变量。</li>
+</ol>
+<p>可以在zsh或bash的配置文件中增加,也可以在profile文件中增加</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>howdy在不同发行版上都有,装起来也比较方便.</li>
+<li>使用howdy要修改操作对应的配置文件</li>
+<li>对于opencv出现的警告,可以增加环境变量解决.</li>
+</ul>
 
                 
             </div>
@@ -543,7 +530,7 @@ spring:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hcqbuqingzhen.github.io/2021/12/15/sc-gateway-09-guo-lu-qi-xian-liu-guo-lu-qi/">https://hcqbuqingzhen.github.io/2021/12/15/sc-gateway-09-guo-lu-qi-xian-liu-guo-lu-qi/</a>
+                    <a href="https://hcqbuqingzhen.github.io/2022/05/22/linux-face/">https://hcqbuqingzhen.github.io/2022/05/22/linux-face/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -581,8 +568,8 @@ spring:
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/spring-cloud-gateway/">
-                                    <span class="chip bg-color">spring-cloud-gateway</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
                                 </a>
                             
                         </div>
@@ -756,17 +743,18 @@ spring:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/12/18/sc-gateway-10-xiu-gai-qing-qiu-xiang-ying-ti/">
+                <a href="/2022/05/22/linux-face/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="sc-gateway-10-修改请求响应体">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="mongodb安装和集群搭建">
                         
-                        <span class="card-title">sc-gateway-10-修改请求响应体</span>
+                        <span class="card-title">mongodb安装和集群搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -776,9 +764,9 @@ spring:
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -787,11 +775,12 @@ spring:
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring-cloud-gateway/">
-                        <span class="chip bg-color">spring-cloud-gateway</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -805,13 +794,13 @@ spring:
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/15/sc-gateway-08-zi-ding-yi-guo-lu-qi-da-yin-duan-lu-qi-xin-xi/">
+                <a href="/2022/05/16/fen-bu-shi-shi-wu-02-seata-fen-bu-shi-shi-wu-guan-li-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="自定义过滤器">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="seata-分布式事务管理器">
                         
-                        <span class="card-title">自定义过滤器</span>
+                        <span class="card-title">seata-分布式事务管理器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -822,7 +811,7 @@ spring:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-16
                             </span>
                         <span class="publish-author">
                             
@@ -835,8 +824,8 @@ spring:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring-cloud-gateway/">
-                        <span class="chip bg-color">spring-cloud-gateway</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+                        <span class="chip bg-color">分布式事务</span>
                     </a>
                     
                 </div>
