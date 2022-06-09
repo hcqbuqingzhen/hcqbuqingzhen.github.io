@@ -539,16 +539,16 @@
 <li>下载nacos-server-2.0.4 ,<a target="_blank" rel="noopener" href="https://nacos.io/zh-cn/docs/quick-start.html">下载</a></li>
 <li>从 <a target="_blank" rel="noopener" href="https://github.com/seata/seata/releases">github</a> 下载seata-server软件包，将其解压缩。</li>
 <li>启动nacos后,运行.<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">启动前要修改seata-server配置文件
-修改registry &#123;
-  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type &#x3D; &quot;nacos&quot;
-&#125;
+修改registry <span class="token punctuation">&#123;</span>
+  <span class="token comment"># file 、nacos 、eureka、redis、zk、consul、etcd3、sofa</span>
+  <span class="token builtin class-name">type</span> <span class="token operator">=</span> <span class="token string">"nacos"</span>
+<span class="token punctuation">&#125;</span>
 
-config &#123;
-  # file、nacos 、apollo、zk、consul、etcd3
-  type &#x3D; &quot;nacos&quot;
-&#125;
-.&#x2F;seata-server.sh -p 8091 -h 127.0.0.1 -m file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+config <span class="token punctuation">&#123;</span>
+  <span class="token comment"># file、nacos 、apollo、zk、consul、etcd3</span>
+  <span class="token builtin class-name">type</span> <span class="token operator">=</span> <span class="token string">"nacos"</span>
+<span class="token punctuation">&#125;</span>
+./seata-server.sh -p <span class="token number">8091</span> -h <span class="token number">127.0</span>.0.1 -m <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <p><strong>会发现seata注册到了nacos</strong> </p>
 <h3 id="3-2-服务搭建"><a href="#3-2-服务搭建" class="headerlink" title="3.2 服务搭建"></a>3.2 服务搭建</h3><ol>
@@ -1338,7 +1338,7 @@ spring:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">104.5k</span>
+                        class="white-color">117.7k</span>
             
             
             

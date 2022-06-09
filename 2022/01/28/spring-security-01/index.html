@@ -462,32 +462,32 @@ org.springframework.security.web.context.SecurityContextPersistenceFilter@5aa026
 
 <p>上面是引入了spring-security的项目启动时打印的日志，除了5和6是自定义的过滤器，其他为框架内置的过滤器。每一种过滤器都有其作用，我们将在后面逐一讲解。</p>
 <p>因为这是个oauth2统一认证的项目，在引入了oauth2后会打印如下另一条过滤器链条。  </p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[requestMatchers&#x3D;[Ant [pattern&#x3D;&#39;&#x2F;oauth&#x2F;token&#39;], Ant [pattern&#x3D;&#39;&#x2F;oauth&#x2F;token_key&#39;], Ant [pattern&#x3D;&#39;&#x2F;oauth&#x2F;check_token&#39;]]],   
-[
-1
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>requestMatchers<span class="token operator">=</span><span class="token punctuation">[</span>Ant <span class="token punctuation">[</span>pattern<span class="token operator">=</span><span class="token string">'/oauth/token'</span><span class="token punctuation">]</span>, Ant <span class="token punctuation">[</span>pattern<span class="token operator">=</span><span class="token string">'/oauth/token_key'</span><span class="token punctuation">]</span>, Ant <span class="token punctuation">[</span>pattern<span class="token operator">=</span><span class="token string">'/oauth/check_token'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span>,   
+<span class="token punctuation">[</span>
+<span class="token number">1</span>
 org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20f94e9a, 
-2
+<span class="token number">2</span>
 org.springframework.security.web.context.SecurityContextPersistenceFilter@54af9cce, 
-3
+<span class="token number">3</span>
 org.springframework.security.web.header.HeaderWriterFilter@7c59f315, 
-4
+<span class="token number">4</span>
 org.springframework.security.web.authentication.logout.LogoutFilter@35129b9e, 
-5
+<span class="token number">5</span>
 org.springframework.security.oauth2.provider.client.ClientCredentialsTokenEndpointFilter@704ca8a8, 
-6
+<span class="token number">6</span>
 org.springframework.security.web.authentication.www.BasicAuthenticationFilter@17a756db, 
-7
+<span class="token number">7</span>
 org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6cb1da13, 
-8
+<span class="token number">8</span>
 org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@539953af, 
-9
+<span class="token number">9</span>
 org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f213e97,
-10
+<span class="token number">10</span>
 org.springframework.security.web.session.SessionManagementFilter@65689000, 
-11 
+<span class="token number">11</span> 
 org.springframework.security.web.access.ExceptionTranslationFilter@2bd67cf9, 
-12
-org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7926d092] <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token number">12</span>
+org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7926d092<span class="token punctuation">]</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面的不出意外都是内置的过滤器。  </p>
 <p>简单的认识之后<br>接下来就是springsecurity的源码探究，包括以下几点。</p>
@@ -1009,7 +1009,7 @@ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7926
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">104.5k</span>
+                        class="white-color">117.7k</span>
             
             
             
