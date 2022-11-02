@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mystyle">
-    <meta name="description" content="title: git原理和常用操作date: 2022-010-30 21:09:55tags: git
-git原理使用github实操git的使用方法日常工作中已经很熟练了 但是git的原理一直没有认真思考过，结合网上资料学习一下。
-1.">
+    <meta name="keywords" content="git原理和常用操作, mystyle">
+    <meta name="description" content="git原理使用github实操git的使用方法日常工作中已经很熟练了 但是git的原理一直没有认真思考过，结合网上资料学习一下。
+1.暂存区(Stage)和索引(index)所谓的暂存区Stage只是一个简单的索引文件而已。指的是是 .gi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +20,7 @@ git原理使用github实操git的使用方法日常工作中已经很熟练了 �
 
     
 
-    <title>mystyle</title>
+    <title>git原理和常用操作 | mystyle</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -248,12 +247,12 @@ git原理使用github实操git的使用方法日常工作中已经很熟练了 �
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">git原理和常用操作</h1>
                 </div>
             </div>
         </div>
@@ -367,9 +366,13 @@ git原理使用github实操git的使用方法日常工作中已经很熟练了 �
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -381,7 +384,7 @@ git原理使用github实操git的使用方法日常工作中已经很熟练了 �
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-11-02
+                    2022-10-30
                 </div>
                 
 
@@ -410,8 +413,7 @@ git原理使用github实操git的使用方法日常工作中已经很熟练了 �
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>title: git原理和常用操作<br>date: 2022-010-30 21:09:55<br>tags: git</p>
-<h1 id="git原理"><a href="#git原理" class="headerlink" title="git原理"></a>git原理</h1><h3 id="使用github实操"><a href="#使用github实操" class="headerlink" title="使用github实操"></a>使用github实操</h3><p>git的使用方法日常工作中已经很熟练了 但是git的原理一直没有认真思考过，结合网上资料学习一下。</p>
+                <h1 id="git原理"><a href="#git原理" class="headerlink" title="git原理"></a>git原理</h1><h3 id="使用github实操"><a href="#使用github实操" class="headerlink" title="使用github实操"></a>使用github实操</h3><p>git的使用方法日常工作中已经很熟练了 但是git的原理一直没有认真思考过，结合网上资料学习一下。</p>
 <h3 id="1-暂存区-Stage-和索引-index"><a href="#1-暂存区-Stage-和索引-index" class="headerlink" title="1.暂存区(Stage)和索引(index)"></a>1.暂存区(Stage)和索引(index)</h3><p>所谓的暂存区<code>Stage</code>只是一个简单的索引文件而已。指的是是 <code>.git/index</code>文件，理解了索引更加有助于理解git的内部原理。</p>
 <p>索引文件里面包含的是文件的目录树，像一个虚拟的工作区，在这个虚拟工作区的目录树中，记录了文件名、文件的最后修改时间、文件长度、文件类型以及最重要的SHA-1值，文件的内容并没有存储在其中。而这个SHA-1值就是某个文件的当前版本号。而文件的具体内容是在.git/objects目录下，你会发现这个目录占用空间比较大，因为它存储着当前项目文件各个版本的内容。</p>
 <p>进入objects目录，会看到一些文件夹，先不管info和pack，其他目录名称都是两个英文字母的。每一个文件的每一个版本号都是SHA-1值(40位)，取前2位作为目录名，取后38位作为文件名，所以你会看到这个目录没有具体意义，只是做一个归纳而已，目录下面的文件之间也没什么关系。</p>
@@ -915,7 +917,7 @@ $ <span class="token function">git</span> stash <span class="token function">cle
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hcqbuqingzhen.github.io/2022/11/02/git-yuan-li-he-chang-yong-cao-zuo/">https://hcqbuqingzhen.github.io/2022/11/02/git-yuan-li-he-chang-yong-cao-zuo/</a>
+                    <a href="https://hcqbuqingzhen.github.io/2022/10/30/git-yuan-li-he-chang-yong-cao-zuo/">https://hcqbuqingzhen.github.io/2022/10/30/git-yuan-li-he-chang-yong-cao-zuo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -952,7 +954,11 @@ $ <span class="token function">git</span> stash <span class="token function">cle
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1129,13 +1135,13 @@ $ <span class="token function">git</span> stash <span class="token function">cle
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2022/11/02/git-yuan-li-he-chang-yong-cao-zuo/">
+                <a href="/2022/10/30/git-yuan-li-he-chang-yong-cao-zuo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="git原理和常用操作">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">git原理和常用操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1146,7 +1152,7 @@ $ <span class="token function">git</span> stash <span class="token function">cle
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-30
                             </span>
                         <span class="publish-author">
                             
@@ -1157,6 +1163,14 @@ $ <span class="token function">git</span> stash <span class="token function">cle
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1389,7 +1403,7 @@ $ <span class="token function">git</span> stash <span class="token function">cle
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">126.2k</span>
+                        class="white-color">126.1k</span>
             
             
             
